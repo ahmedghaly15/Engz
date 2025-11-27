@@ -9,11 +9,37 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # state management
+  hydrated_bloc: ^10.1.1
+  # DI
+  get_it: ^9.1.1
+  # For getting commonly used locations on host platform file systems
+  path_provider: ^2.1.5
+  # For adapting screen and font size
+  flutter_screenutil: ^5.9.3
+  # For beautiful logging
+  logger: ^2.6.2
+  # For immutable data classes
+  freezed_annotation: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  # A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.14
+  # For immutable data classes
+  freezed: ^3.2.3
+  # For JSON serialization and deserialization.
+  json_serializable: ^6.11.1
+  # Provides code formatting and linting rules for bloc.
+  bloc_lint: ^0.3.3
+  # Plugin for creating native splash screen
+  flutter_native_splash: ^2.4.7
+  # For updating the app's launcher icon
+  icons_launcher: ^3.0.2
+  # Changes the name of the app
+  rename_app: ^1.6.5
 
 flutter:
   uses-material-design: true
