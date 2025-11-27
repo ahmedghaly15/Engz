@@ -57,3 +57,10 @@ flutter:
           weight: 400
         - asset: assets/fonts/Lato/Lato-Bold.ttf
           weight: 700
+
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/core/utils/
+  filename: assets.dart
+  field_prefix: null
