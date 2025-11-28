@@ -5,7 +5,6 @@ import '../../core/utils/assets.dart';
 import '../../models/onboarding.dart';
 
 part 'onboarding_state.freezed.dart';
-part 'onboarding_state.g.dart';
 
 enum OnboardingStatus { initial, moveNext, moveBack, pageChanged }
 
@@ -18,19 +17,14 @@ extension OnboardingStatusExt on OnboardingStatus {
 
 @freezed
 sealed class OnboardingState with _$OnboardingState {
-  @JsonSerializable(explicitToJson: true)
   const factory OnboardingState({
     @Default(OnboardingStatus.initial) OnboardingStatus status,
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    @Default(0)
-    int currentPage,
+    @Default(0) int currentPage,
     @Default([]) List<Onboarding> onboardingPages,
   }) = _OnboardingState;
 
   factory OnboardingState.initial() =>
       const OnboardingState(onboardingPages: _onboardingPages);
-  factory OnboardingState.fromJson(Map<String, Object?> json) =>
-      _$OnboardingStateFromJson(json);
 
   static const List<Onboarding> _onboardingPages = [
     Onboarding(
