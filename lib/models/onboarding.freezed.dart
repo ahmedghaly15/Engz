@@ -11,6 +11,7 @@ part of 'onboarding.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$Onboarding {
 
@@ -21,6 +22,8 @@ mixin _$Onboarding {
 @pragma('vm:prefer-inline')
 $OnboardingCopyWith<Onboarding> get copyWith => _$OnboardingCopyWithImpl<Onboarding>(this as Onboarding, _$identity);
 
+  /// Serializes this Onboarding to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Onboarding&&(identical(other.imgPath, imgPath) || other.imgPath == imgPath)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,imgPath,title,description);
 
@@ -199,11 +202,11 @@ return $default(_that.imgPath,_that.title,_that.description);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _Onboarding implements Onboarding {
   const _Onboarding({required this.imgPath, required this.title, required this.description});
-  
+  factory _Onboarding.fromJson(Map<String, dynamic> json) => _$OnboardingFromJson(json);
 
 @override final  String imgPath;
 @override final  String title;
@@ -215,14 +218,17 @@ class _Onboarding implements Onboarding {
 @pragma('vm:prefer-inline')
 _$OnboardingCopyWith<_Onboarding> get copyWith => __$OnboardingCopyWithImpl<_Onboarding>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$OnboardingToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _Onboarding&&(identical(other.imgPath, imgPath) || other.imgPath == imgPath)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,imgPath,title,description);
 
