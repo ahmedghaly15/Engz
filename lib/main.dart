@@ -5,6 +5,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'bloc_observer.dart';
+import 'core/di/di.dart';
 import 'engz_app.dart';
 
 void main() async {
@@ -18,7 +19,7 @@ void main() async {
   );
 
   Bloc.observer = MyBlocObserver();
-  // setupDi();
+  setupDI();
   await ScreenUtil.ensureScreenSize();
   runApp(const EngzApp());
 }
