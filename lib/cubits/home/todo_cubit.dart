@@ -12,8 +12,20 @@ class TodoCubit extends HydratedCubit<HomeState> {
     );
   }
 
-  void updateTodo(int index, Todo updatedTodo) {
-    final updatedTodos = [...state.todos]..[index] = updatedTodo;
+  void updateTodo(int index, Todo todo) {
+    final current = todo;
+
+    final updated = current.copyWith(
+      title: todo.title ?? current.title,
+      description: todo.description ?? current.description,
+      dateTime: todo.dateTime ?? current.dateTime,
+      category: todo.category ?? current.category,
+      priority: todo.priority ?? current.priority,
+      isCompleted: todo.isCompleted ?? current.isCompleted,
+    );
+
+    final updatedTodos = [...state.todos]..[index] = updated;
+
     emit(state.copyWith(todos: updatedTodos, status: HomeStatus.updateTodo));
   }
 
@@ -22,10 +34,9 @@ class TodoCubit extends HydratedCubit<HomeState> {
     emit(state.copyWith(todos: updatedTodos, status: HomeStatus.deleteTodo));
   }
 
-  void completeTodo(Todo todo) {
-    final updatedTodo = todo.copyWith(isCompleted: true);
-    final index = state.todos.indexOf(todo);
-    updateTodo(index, updatedTodo);
+  void completeTodo(int index) {
+    final updated = state.todos[index].copyWith(isCompleted: true);
+    updateTodo(index, updated);
   }
 
   @override
