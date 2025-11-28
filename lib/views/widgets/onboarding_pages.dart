@@ -1,73 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/theming/app_text_styles.dart';
-import '../../core/utils/consts.dart';
+import '../../cubits/onboarding/onboarding_cubit.dart';
+import '../../cubits/onboarding/onboarding_state.dart';
+import '../../models/onboarding.dart';
 import 'dot_indicator.dart';
+import 'onboarding_controller.dart';
 
-class OnboardingPages extends StatefulWidget {
+class OnboardingPages extends StatelessWidget {
   const OnboardingPages({super.key});
-
-  @override
-  State<OnboardingPages> createState() => _OnboardingPagesState();
-}
-
-class _OnboardingPagesState extends State<OnboardingPages> {
-  late final PageController _pageController;
-
-  @override
-  void initState() {
-    _pageController = PageController(initialPage: 0);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final pagesCount = Consts.onboardingPages.length;
-    return PageView.builder(
-      controller: _pageController,
-      scrollDirection: .horizontal,
-      itemCount: pagesCount,
-      itemBuilder: (_, index) {
-        final page = Consts.onboardingPages[index];
-        return Column(
-          crossAxisAlignment: .center,
-          children: [
-            Image.asset(page.imgPath),
-            Container(
-              margin: .symmetric(vertical: 50.h),
-              child: Row(
-                mainAxisAlignment: .center,
-                spacing: 8.w,
-                children: List.generate(
-                  pagesCount,
-                  (index) => const DotIndicator(isActive: true),
-                  growable: false,
-                ),
-              ),
-            ),
-            Container(
-              margin: .only(bottom: 40.h),
-              child: Text(
-                page.title,
-                style: AppTextStyles.font32Bold,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Text(
-              page.description,
-              style: AppTextStyles.font16Regular,
-              textAlign: TextAlign.center,
-            ),
-          ],
+    return BlocSelector<OnboardingCubit, OnboardingState, List<Onboarding>>(
+      selector: (state) => state.onboardingPages,
+      builder: (context, onboardingPages) {
+        final pagesCount = onboardingPages.length;
+        return PageView.builder(
+          controller: OnboardingController.of(context),
+          scrollDirection: .horizontal,
+          itemCount: pagesCount,
+          onPageChanged: context.read<OnboardingCubit>().onPageChanged,
+          itemBuilder: (_, index) {
+            final page = onboardingPages[index];
+            return _buildOnboardingPage(page, pagesCount);
+          },
         );
       },
+    );
+  }
+
+  Column _buildOnboardingPage(Onboarding page, int pagesCount) {
+    return Column(
+      crossAxisAlignment: .center,
+      mainAxisAlignment: .center,
+      children: [
+        Image.asset(page.imgPath, fit: BoxFit.cover),
+        Container(
+          margin: .symmetric(vertical: 50.h),
+          child: Row(
+            mainAxisAlignment: .center,
+            spacing: 8.w,
+            children: List.generate(
+              pagesCount,
+              (index) => DotIndicator(index: index),
+              growable: false,
+            ),
+          ),
+        ),
+        Container(
+          margin: .only(bottom: 40.h),
+          child: Text(
+            page.title,
+            style: AppTextStyles.font32Bold,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Text(
+          page.description,
+          style: AppTextStyles.font16Regular,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

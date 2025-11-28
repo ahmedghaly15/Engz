@@ -1,41 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
-import '../core/theming/app_text_styles.dart';
-import '../core/utils/app_strings.dart';
-import '../core/widgets/primary_button.dart';
+import 'widgets/onboarding_bloc_listener.dart';
+import 'widgets/onboarding_controller.dart';
+import 'widgets/onboarding_move_back_text_button.dart';
+import 'widgets/onboarding_move_next_button.dart';
 import 'widgets/onboarding_pages.dart';
 
-class OnboardingView extends StatelessWidget {
+class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});
 
   @override
+  State<OnboardingView> createState() => _OnboardingViewState();
+}
+
+class _OnboardingViewState extends State<OnboardingView> {
+  late final PageController _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: .symmetric(horizontal: 32.w, vertical: 24.h),
-          child: Column(
-            crossAxisAlignment: .center,
-            children: [
-              const Expanded(child: OnboardingPages()),
-              // const Spacer(),
-              Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  ShadButton.ghost(
-                    child: const Text(AppStrings.back),
-                    textStyle: AppTextStyles.font16Regular,
-                  ),
-                  PrimaryButton(
-                    expands: false,
-                    onPressed: () {},
-                    text: AppStrings.next,
-                  ),
-                ],
-              ),
-            ],
+    return OnboardingController(
+      pageController: _pageController,
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: .symmetric(horizontal: 32.w, vertical: 24.h),
+            child: const Column(
+              crossAxisAlignment: .center,
+              children: [
+                OnboardingBlocListener(),
+                Expanded(child: OnboardingPages()),
+                Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    OnboardingBackTextButton(),
+                    OnboardingMoveNextButton(),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
