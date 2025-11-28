@@ -43,8 +43,6 @@ class _HomeViewState extends State<HomeView> {
                 child: Align(
                   alignment: AlignmentDirectional.topStart,
                   child: Container(
-                    // height: 32.h,
-                    // width: 80.w,
                     margin: .only(bottom: 32.h),
                     padding: .symmetric(vertical: 5.h, horizontal: 10.w),
                     decoration: BoxDecoration(
@@ -142,8 +140,6 @@ class _HomeViewState extends State<HomeView> {
                   child: Align(
                     alignment: AlignmentDirectional.topStart,
                     child: Container(
-                      // height: 32.h,
-                      // width: 80.w,
                       padding: .symmetric(vertical: 5.h, horizontal: 10.w),
                       decoration: BoxDecoration(
                         color: Colors.white.withAlpha((0.21 * 255).round()),
