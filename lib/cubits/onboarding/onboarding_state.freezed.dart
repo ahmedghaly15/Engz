@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$OnboardingState {
 
- OnboardingStatus get status; int get currentPage; List<Onboarding> get onboardingPages;
+ OnboardingStatus get status;@JsonKey(includeFromJson: false, includeToJson: false) int get currentPage; List<Onboarding> get onboardingPages;
 /// Create a copy of OnboardingState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $OnboardingStateCopyWith<$Res>  {
   factory $OnboardingStateCopyWith(OnboardingState value, $Res Function(OnboardingState) _then) = _$OnboardingStateCopyWithImpl;
 @useResult
 $Res call({
- OnboardingStatus status, int currentPage, List<Onboarding> onboardingPages
+ OnboardingStatus status,@JsonKey(includeFromJson: false, includeToJson: false) int currentPage, List<Onboarding> onboardingPages
 });
 
 
@@ -152,7 +152,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( OnboardingStatus status,  int currentPage,  List<Onboarding> onboardingPages)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( OnboardingStatus status, @JsonKey(includeFromJson: false, includeToJson: false)  int currentPage,  List<Onboarding> onboardingPages)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _OnboardingState() when $default != null:
 return $default(_that.status,_that.currentPage,_that.onboardingPages);case _:
@@ -173,7 +173,7 @@ return $default(_that.status,_that.currentPage,_that.onboardingPages);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( OnboardingStatus status,  int currentPage,  List<Onboarding> onboardingPages)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( OnboardingStatus status, @JsonKey(includeFromJson: false, includeToJson: false)  int currentPage,  List<Onboarding> onboardingPages)  $default,) {final _that = this;
 switch (_that) {
 case _OnboardingState():
 return $default(_that.status,_that.currentPage,_that.onboardingPages);}
@@ -190,7 +190,7 @@ return $default(_that.status,_that.currentPage,_that.onboardingPages);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( OnboardingStatus status,  int currentPage,  List<Onboarding> onboardingPages)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( OnboardingStatus status, @JsonKey(includeFromJson: false, includeToJson: false)  int currentPage,  List<Onboarding> onboardingPages)?  $default,) {final _that = this;
 switch (_that) {
 case _OnboardingState() when $default != null:
 return $default(_that.status,_that.currentPage,_that.onboardingPages);case _:
@@ -202,14 +202,14 @@ return $default(_that.status,_that.currentPage,_that.onboardingPages);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _OnboardingState implements OnboardingState {
-  const _OnboardingState({this.status = OnboardingStatus.initial, this.currentPage = 0, final  List<Onboarding> onboardingPages = _onboardingPages}): _onboardingPages = onboardingPages;
+  const _OnboardingState({this.status = OnboardingStatus.initial, @JsonKey(includeFromJson: false, includeToJson: false) this.currentPage = 0, final  List<Onboarding> onboardingPages = const []}): _onboardingPages = onboardingPages;
   factory _OnboardingState.fromJson(Map<String, dynamic> json) => _$OnboardingStateFromJson(json);
 
 @override@JsonKey() final  OnboardingStatus status;
-@override@JsonKey() final  int currentPage;
+@override@JsonKey(includeFromJson: false, includeToJson: false) final  int currentPage;
  final  List<Onboarding> _onboardingPages;
 @override@JsonKey() List<Onboarding> get onboardingPages {
   if (_onboardingPages is EqualUnmodifiableListView) return _onboardingPages;
@@ -251,7 +251,7 @@ abstract mixin class _$OnboardingStateCopyWith<$Res> implements $OnboardingState
   factory _$OnboardingStateCopyWith(_OnboardingState value, $Res Function(_OnboardingState) _then) = __$OnboardingStateCopyWithImpl;
 @override @useResult
 $Res call({
- OnboardingStatus status, int currentPage, List<Onboarding> onboardingPages
+ OnboardingStatus status,@JsonKey(includeFromJson: false, includeToJson: false) int currentPage, List<Onboarding> onboardingPages
 });
 
 

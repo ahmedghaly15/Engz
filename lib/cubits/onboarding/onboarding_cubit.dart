@@ -27,6 +27,12 @@ class OnboardingCubit extends HydratedCubit<OnboardingState> {
     }
   }
 
+  void onPageChanged(int index) {
+    emit(
+      state.copyWith(status: OnboardingStatus.pageChanged, currentPage: index),
+    );
+  }
+
   @override
   OnboardingState? fromJson(Map<String, dynamic> json) =>
       OnboardingState.fromJson(json);

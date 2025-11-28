@@ -11,23 +11,23 @@ _OnboardingState _$OnboardingStateFromJson(Map<String, dynamic> json) =>
       status:
           $enumDecodeNullable(_$OnboardingStatusEnumMap, json['status']) ??
           OnboardingStatus.initial,
-      currentPage: (json['currentPage'] as num?)?.toInt() ?? 0,
       onboardingPages:
           (json['onboardingPages'] as List<dynamic>?)
               ?.map((e) => Onboarding.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          _onboardingPages,
+          const [],
     );
 
-Map<String, dynamic> _$OnboardingStateToJson(_OnboardingState instance) =>
-    <String, dynamic>{
-      'status': _$OnboardingStatusEnumMap[instance.status]!,
-      'currentPage': instance.currentPage,
-      'onboardingPages': instance.onboardingPages,
-    };
+Map<String, dynamic> _$OnboardingStateToJson(
+  _OnboardingState instance,
+) => <String, dynamic>{
+  'status': _$OnboardingStatusEnumMap[instance.status]!,
+  'onboardingPages': instance.onboardingPages.map((e) => e.toJson()).toList(),
+};
 
 const _$OnboardingStatusEnumMap = {
   OnboardingStatus.initial: 'initial',
   OnboardingStatus.moveNext: 'moveNext',
   OnboardingStatus.moveBack: 'moveBack',
+  OnboardingStatus.pageChanged: 'pageChanged',
 };
