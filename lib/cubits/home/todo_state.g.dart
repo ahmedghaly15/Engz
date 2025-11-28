@@ -15,12 +15,16 @@ _HomeState _$HomeStateFromJson(Map<String, dynamic> json) => _HomeState(
           ?.map((e) => Todo.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
+  showCompleted: json['showCompleted'] as bool? ?? false,
+  showTodos: json['showTodos'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$HomeStateToJson(_HomeState instance) =>
     <String, dynamic>{
       'status': _$HomeStatusEnumMap[instance.status]!,
       'todos': instance.todos.map((e) => e.toJson()).toList(),
+      'showCompleted': instance.showCompleted,
+      'showTodos': instance.showTodos,
     };
 
 const _$HomeStatusEnumMap = {
@@ -29,4 +33,6 @@ const _$HomeStatusEnumMap = {
   HomeStatus.addTodo: 'addTodo',
   HomeStatus.updateTodo: 'updateTodo',
   HomeStatus.deleteTodo: 'deleteTodo',
+  HomeStatus.showCompletedTodos: 'showCompletedTodos',
+  HomeStatus.showTodos: 'showTodos',
 };

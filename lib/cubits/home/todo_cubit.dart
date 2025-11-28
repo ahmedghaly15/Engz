@@ -39,6 +39,17 @@ class TodoCubit extends HydratedCubit<HomeState> {
     updateTodo(index, updated);
   }
 
+  void toggleShowCompleted() => emit(
+    state.copyWith(
+      showCompleted: !state.showCompleted,
+      status: HomeStatus.showCompletedTodos,
+    ),
+  );
+
+  void toggleShowTodos() => emit(
+    state.copyWith(showTodos: !state.showTodos, status: HomeStatus.showTodos),
+  );
+
   @override
   HomeState? fromJson(Map<String, dynamic> json) => HomeState.fromJson(json);
 

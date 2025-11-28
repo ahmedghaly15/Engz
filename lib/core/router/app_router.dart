@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../cubits/home/todo_cubit.dart';
 import '../../cubits/onboarding/onboarding_cubit.dart';
 import '../../views/home_view.dart';
 import '../../views/onboarding_view.dart';
@@ -32,8 +33,12 @@ class AppRouter {
     );
   }
 
-  static MaterialPageRoute<dynamic> _homeRoute() =>
-      MaterialPageRoute(builder: (_) => const HomeView());
+  static MaterialPageRoute<dynamic> _homeRoute() => MaterialPageRoute(
+    builder: (_) => BlocProvider<TodoCubit>(
+      create: (_) => getIt<TodoCubit>(),
+      child: const HomeView(),
+    ),
+  );
 
   static MaterialPageRoute<dynamic> _notFoundRoute() => MaterialPageRoute(
     builder: (_) =>
