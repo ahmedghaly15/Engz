@@ -24,6 +24,8 @@ dependencies:
   freezed_annotation: ^3.1.0
   # Provides awesome UI components
   shadcn_ui: ^0.39.14
+  # For simple cache processes
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:

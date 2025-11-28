@@ -5,6 +5,10 @@ extension NavigationExtensions on BuildContext {
     Navigator.pushNamed(this, routeName);
   }
 
+  void pushReplacementNamed(String routeName) {
+    Navigator.pushReplacementNamed(this, routeName);
+  }
+
   void pop([dynamic result]) {
     Navigator.pop(this, result);
   }
