@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'bloc_observer.dart';
 import 'core/di/di.dart';
+import 'core/utils/functions/check_if_onboarding_is_visited.dart';
 import 'engz_app.dart';
 
 void main() async {
@@ -19,7 +20,10 @@ void main() async {
   );
 
   Bloc.observer = MyBlocObserver();
-  setupDI();
-  await ScreenUtil.ensureScreenSize();
+  await setupDI();
+  await Future.wait([
+    ScreenUtil.ensureScreenSize(),
+    checkIfOnboardingIsVisited(),
+  ]);
   runApp(const EngzApp());
 }
