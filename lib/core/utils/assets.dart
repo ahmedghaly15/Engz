@@ -2,17 +2,21 @@
 class Assets {
   Assets._();
   
-  /// Assets for fontsLatoLatoLatoBold
-  /// assets/fonts/Lato/Lato/Lato-Bold.ttf
-  static const String fontsLatoLatoLatoBold = "assets/fonts/Lato/Lato/Lato-Bold.ttf";
+  /// Assets for fontsLatoLatoBold
+  /// assets/fonts/Lato/Lato-Bold.ttf
+  static const String fontsLatoLatoBold = "assets/fonts/Lato/Lato-Bold.ttf";
 
-  /// Assets for fontsLatoLatoLatoRegular
-  /// assets/fonts/Lato/Lato/Lato-Regular.ttf
-  static const String fontsLatoLatoLatoRegular = "assets/fonts/Lato/Lato/Lato-Regular.ttf";
+  /// Assets for fontsLatoLatoRegular
+  /// assets/fonts/Lato/Lato-Regular.ttf
+  static const String fontsLatoLatoRegular = "assets/fonts/Lato/Lato-Regular.ttf";
 
-  /// Assets for fontsLatoLatoOFL
-  /// assets/fonts/Lato/Lato/OFL.txt
-  static const String fontsLatoLatoOFL = "assets/fonts/Lato/Lato/OFL.txt";
+  /// Assets for fontsLatoOFL
+  /// assets/fonts/Lato/OFL.txt
+  static const String fontsLatoOFL = "assets/fonts/Lato/OFL.txt";
+
+  /// Assets for imagesEmptyTodos
+  /// assets/images/empty-todos.png
+  static const String imagesEmptyTodos = "assets/images/empty-todos.png";
 
   /// Assets for imagesOnboarding1
   /// assets/images/onboarding-1.png
@@ -37,5 +41,13 @@ class Assets {
   /// Assets for logo
   /// assets/logo.png
   static const String logo = "assets/logo.png";
+
+  /// Assets for svgsArrowDown
+  /// assets/svgs/arrow-down.svg
+  static const String svgsArrowDown = "assets/svgs/arrow-down.svg";
+
+  /// Assets for svgsFlag
+  /// assets/svgs/flag.svg
+  static const String svgsFlag = "assets/svgs/flag.svg";
 }
 
