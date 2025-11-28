@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/theming/app_colors.dart';
+import '../../cubits/onboarding/onboarding_cubit.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({
     super.key,
-    required this.isActive,
+    required this.index,
     this.height = 4,
     this.width = 25,
     this.inactiveWidth,
@@ -15,7 +17,7 @@ class DotIndicator extends StatelessWidget {
     this.animationDuration = const Duration(milliseconds: 300),
   });
 
-  final bool isActive;
+  final int index;
   final double? height, width, inactiveWidth;
   final BoxShape shape;
   final BorderRadiusGeometry? borderRadius;
@@ -23,6 +25,9 @@ class DotIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isActive = context.select<OnboardingCubit, bool>(
+      (cubit) => cubit.state.currentPage == index,
+    );
     return AnimatedContainer(
       duration: animationDuration,
       width: (isActive ? width : inactiveWidth ?? width)?.w,
