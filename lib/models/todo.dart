@@ -9,12 +9,12 @@ part 'todo.g.dart';
 sealed class Todo with _$Todo {
   @JsonSerializable(explicitToJson: true)
   const factory Todo({
-    required String title,
-    required String description,
-    required DateTime dateTime,
-    required Category category,
-    required int priority,
-    required bool isCompleted,
+    String? title,
+    String? description,
+    DateTime? dateTime,
+    Category? category,
+    int? priority,
+    bool? isCompleted,
   }) = _Todo;
   factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
 }

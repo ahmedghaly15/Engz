@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Todo {
 
- String get title; String get description; DateTime get dateTime; Category get category; int get priority; bool get isCompleted;
+ String? get title; String? get description; DateTime? get dateTime; Category? get category; int? get priority; bool? get isCompleted;
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,11 +48,11 @@ abstract mixin class $TodoCopyWith<$Res>  {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) _then) = _$TodoCopyWithImpl;
 @useResult
 $Res call({
- String title, String description, DateTime dateTime, Category category, int priority, bool isCompleted
+ String? title, String? description, DateTime? dateTime, Category? category, int? priority, bool? isCompleted
 });
 
 
-$CategoryCopyWith<$Res> get category;
+$CategoryCopyWith<$Res>? get category;
 
 }
 /// @nodoc
@@ -65,24 +65,27 @@ class _$TodoCopyWithImpl<$Res>
 
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? description = null,Object? dateTime = null,Object? category = null,Object? priority = null,Object? isCompleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? dateTime = freezed,Object? category = freezed,Object? priority = freezed,Object? isCompleted = freezed,}) {
   return _then(_self.copyWith(
-title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,dateTime: null == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
-as DateTime,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
-as Category,priority: null == priority ? _self.priority : priority // ignore: cast_nullable_to_non_nullable
-as int,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
-as bool,
+title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,dateTime: freezed == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
+as DateTime?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as Category?,priority: freezed == priority ? _self.priority : priority // ignore: cast_nullable_to_non_nullable
+as int?,isCompleted: freezed == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CategoryCopyWith<$Res> get category {
-  
-  return $CategoryCopyWith<$Res>(_self.category, (value) {
+$CategoryCopyWith<$Res>? get category {
+    if (_self.category == null) {
+    return null;
+  }
+
+  return $CategoryCopyWith<$Res>(_self.category!, (value) {
     return _then(_self.copyWith(category: value));
   });
 }
@@ -164,7 +167,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String description,  DateTime dateTime,  Category category,  int priority,  bool isCompleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? description,  DateTime? dateTime,  Category? category,  int? priority,  bool? isCompleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Todo() when $default != null:
 return $default(_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);case _:
@@ -185,7 +188,7 @@ return $default(_that.title,_that.description,_that.dateTime,_that.category,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String description,  DateTime dateTime,  Category category,  int priority,  bool isCompleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? description,  DateTime? dateTime,  Category? category,  int? priority,  bool? isCompleted)  $default,) {final _that = this;
 switch (_that) {
 case _Todo():
 return $default(_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);}
@@ -202,7 +205,7 @@ return $default(_that.title,_that.description,_that.dateTime,_that.category,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String description,  DateTime dateTime,  Category category,  int priority,  bool isCompleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? description,  DateTime? dateTime,  Category? category,  int? priority,  bool? isCompleted)?  $default,) {final _that = this;
 switch (_that) {
 case _Todo() when $default != null:
 return $default(_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);case _:
@@ -217,15 +220,15 @@ return $default(_that.title,_that.description,_that.dateTime,_that.category,_tha
 
 @JsonSerializable(explicitToJson: true)
 class _Todo implements Todo {
-  const _Todo({required this.title, required this.description, required this.dateTime, required this.category, required this.priority, required this.isCompleted});
+  const _Todo({this.title, this.description, this.dateTime, this.category, this.priority, this.isCompleted});
   factory _Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
 
-@override final  String title;
-@override final  String description;
-@override final  DateTime dateTime;
-@override final  Category category;
-@override final  int priority;
-@override final  bool isCompleted;
+@override final  String? title;
+@override final  String? description;
+@override final  DateTime? dateTime;
+@override final  Category? category;
+@override final  int? priority;
+@override final  bool? isCompleted;
 
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
@@ -260,11 +263,11 @@ abstract mixin class _$TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   factory _$TodoCopyWith(_Todo value, $Res Function(_Todo) _then) = __$TodoCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String description, DateTime dateTime, Category category, int priority, bool isCompleted
+ String? title, String? description, DateTime? dateTime, Category? category, int? priority, bool? isCompleted
 });
 
 
-@override $CategoryCopyWith<$Res> get category;
+@override $CategoryCopyWith<$Res>? get category;
 
 }
 /// @nodoc
@@ -277,15 +280,15 @@ class __$TodoCopyWithImpl<$Res>
 
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? description = null,Object? dateTime = null,Object? category = null,Object? priority = null,Object? isCompleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? description = freezed,Object? dateTime = freezed,Object? category = freezed,Object? priority = freezed,Object? isCompleted = freezed,}) {
   return _then(_Todo(
-title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,dateTime: null == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
-as DateTime,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
-as Category,priority: null == priority ? _self.priority : priority // ignore: cast_nullable_to_non_nullable
-as int,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
-as bool,
+title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,dateTime: freezed == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
+as DateTime?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as Category?,priority: freezed == priority ? _self.priority : priority // ignore: cast_nullable_to_non_nullable
+as int?,isCompleted: freezed == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 
@@ -293,9 +296,12 @@ as bool,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CategoryCopyWith<$Res> get category {
-  
-  return $CategoryCopyWith<$Res>(_self.category, (value) {
+$CategoryCopyWith<$Res>? get category {
+    if (_self.category == null) {
+    return null;
+  }
+
+  return $CategoryCopyWith<$Res>(_self.category!, (value) {
     return _then(_self.copyWith(category: value));
   });
 }
