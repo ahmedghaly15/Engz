@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class OnboardingController extends InheritedWidget {
+class InheritedPageController extends InheritedWidget {
   final PageController pageController;
 
-  const OnboardingController({
+  const InheritedPageController({
     super.key,
     required super.child,
     required this.pageController,
   });
 
   static PageController of(BuildContext context) => context
-      .dependOnInheritedWidgetOfExactType<OnboardingController>()!
+      .dependOnInheritedWidgetOfExactType<InheritedPageController>()!
       .pageController;
 
   @override

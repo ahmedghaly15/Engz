@@ -13,42 +13,42 @@ part of 'todo_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$TodoState {
 
- HomeStatus get status; List<Todo> get todos; bool get showCompleted; bool get showTodos;
-/// Create a copy of HomeState
+ TodoStatus get status; List<Todo> get todos; bool get showCompleted;
+/// Create a copy of TodoState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>(this as HomeState, _$identity);
+$TodoStateCopyWith<TodoState> get copyWith => _$TodoStateCopyWithImpl<TodoState>(this as TodoState, _$identity);
 
-  /// Serializes this HomeState to a JSON map.
+  /// Serializes this TodoState to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.todos, todos)&&(identical(other.showCompleted, showCompleted) || other.showCompleted == showCompleted)&&(identical(other.showTodos, showTodos) || other.showTodos == showTodos));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TodoState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.todos, todos)&&(identical(other.showCompleted, showCompleted) || other.showCompleted == showCompleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(todos),showCompleted,showTodos);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(todos),showCompleted);
 
 @override
 String toString() {
-  return 'HomeState(status: $status, todos: $todos, showCompleted: $showCompleted, showTodos: $showTodos)';
+  return 'TodoState(status: $status, todos: $todos, showCompleted: $showCompleted)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $HomeStateCopyWith<$Res>  {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
+abstract mixin class $TodoStateCopyWith<$Res>  {
+  factory $TodoStateCopyWith(TodoState value, $Res Function(TodoState) _then) = _$TodoStateCopyWithImpl;
 @useResult
 $Res call({
- HomeStatus status, List<Todo> todos, bool showCompleted, bool showTodos
+ TodoStatus status, List<Todo> todos, bool showCompleted
 });
 
 
@@ -56,21 +56,20 @@ $Res call({
 
 }
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._self, this._then);
+class _$TodoStateCopyWithImpl<$Res>
+    implements $TodoStateCopyWith<$Res> {
+  _$TodoStateCopyWithImpl(this._self, this._then);
 
-  final HomeState _self;
-  final $Res Function(HomeState) _then;
+  final TodoState _self;
+  final $Res Function(TodoState) _then;
 
-/// Create a copy of HomeState
+/// Create a copy of TodoState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? todos = null,Object? showCompleted = null,Object? showTodos = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? todos = null,Object? showCompleted = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as HomeStatus,todos: null == todos ? _self.todos : todos // ignore: cast_nullable_to_non_nullable
+as TodoStatus,todos: null == todos ? _self.todos : todos // ignore: cast_nullable_to_non_nullable
 as List<Todo>,showCompleted: null == showCompleted ? _self.showCompleted : showCompleted // ignore: cast_nullable_to_non_nullable
-as bool,showTodos: null == showTodos ? _self.showTodos : showTodos // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -78,8 +77,8 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [HomeState].
-extension HomeStatePatterns on HomeState {
+/// Adds pattern-matching-related methods to [TodoState].
+extension TodoStatePatterns on TodoState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -92,10 +91,10 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _HomeState value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TodoState value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
+case _TodoState() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -114,10 +113,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _HomeState value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TodoState value)  $default,){
 final _that = this;
 switch (_that) {
-case _HomeState():
+case _TodoState():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -132,10 +131,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _HomeState value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TodoState value)?  $default,){
 final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
+case _TodoState() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -153,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( HomeStatus status,  List<Todo> todos,  bool showCompleted,  bool showTodos)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TodoStatus status,  List<Todo> todos,  bool showCompleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
-return $default(_that.status,_that.todos,_that.showCompleted,_that.showTodos);case _:
+case _TodoState() when $default != null:
+return $default(_that.status,_that.todos,_that.showCompleted);case _:
   return orElse();
 
 }
@@ -174,10 +173,10 @@ return $default(_that.status,_that.todos,_that.showCompleted,_that.showTodos);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( HomeStatus status,  List<Todo> todos,  bool showCompleted,  bool showTodos)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TodoStatus status,  List<Todo> todos,  bool showCompleted)  $default,) {final _that = this;
 switch (_that) {
-case _HomeState():
-return $default(_that.status,_that.todos,_that.showCompleted,_that.showTodos);}
+case _TodoState():
+return $default(_that.status,_that.todos,_that.showCompleted);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -191,10 +190,10 @@ return $default(_that.status,_that.todos,_that.showCompleted,_that.showTodos);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( HomeStatus status,  List<Todo> todos,  bool showCompleted,  bool showTodos)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TodoStatus status,  List<Todo> todos,  bool showCompleted)?  $default,) {final _that = this;
 switch (_that) {
-case _HomeState() when $default != null:
-return $default(_that.status,_that.todos,_that.showCompleted,_that.showTodos);case _:
+case _TodoState() when $default != null:
+return $default(_that.status,_that.todos,_that.showCompleted);case _:
   return null;
 
 }
@@ -205,11 +204,11 @@ return $default(_that.status,_that.todos,_that.showCompleted,_that.showTodos);ca
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _HomeState implements HomeState {
-  const _HomeState({this.status = HomeStatus.initial, final  List<Todo> todos = const [], this.showCompleted = false, this.showTodos = false}): _todos = todos;
-  factory _HomeState.fromJson(Map<String, dynamic> json) => _$HomeStateFromJson(json);
+class _TodoState implements TodoState {
+  const _TodoState({this.status = TodoStatus.initial, final  List<Todo> todos = const [], this.showCompleted = false}): _todos = todos;
+  factory _TodoState.fromJson(Map<String, dynamic> json) => _$TodoStateFromJson(json);
 
-@override@JsonKey() final  HomeStatus status;
+@override@JsonKey() final  TodoStatus status;
  final  List<Todo> _todos;
 @override@JsonKey() List<Todo> get todos {
   if (_todos is EqualUnmodifiableListView) return _todos;
@@ -218,42 +217,41 @@ class _HomeState implements HomeState {
 }
 
 @override@JsonKey() final  bool showCompleted;
-@override@JsonKey() final  bool showTodos;
 
-/// Create a copy of HomeState
+/// Create a copy of TodoState
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeState>(this, _$identity);
+_$TodoStateCopyWith<_TodoState> get copyWith => __$TodoStateCopyWithImpl<_TodoState>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$HomeStateToJson(this, );
+  return _$TodoStateToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._todos, _todos)&&(identical(other.showCompleted, showCompleted) || other.showCompleted == showCompleted)&&(identical(other.showTodos, showTodos) || other.showTodos == showTodos));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TodoState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._todos, _todos)&&(identical(other.showCompleted, showCompleted) || other.showCompleted == showCompleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_todos),showCompleted,showTodos);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_todos),showCompleted);
 
 @override
 String toString() {
-  return 'HomeState(status: $status, todos: $todos, showCompleted: $showCompleted, showTodos: $showTodos)';
+  return 'TodoState(status: $status, todos: $todos, showCompleted: $showCompleted)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
+abstract mixin class _$TodoStateCopyWith<$Res> implements $TodoStateCopyWith<$Res> {
+  factory _$TodoStateCopyWith(_TodoState value, $Res Function(_TodoState) _then) = __$TodoStateCopyWithImpl;
 @override @useResult
 $Res call({
- HomeStatus status, List<Todo> todos, bool showCompleted, bool showTodos
+ TodoStatus status, List<Todo> todos, bool showCompleted
 });
 
 
@@ -261,21 +259,20 @@ $Res call({
 
 }
 /// @nodoc
-class __$HomeStateCopyWithImpl<$Res>
-    implements _$HomeStateCopyWith<$Res> {
-  __$HomeStateCopyWithImpl(this._self, this._then);
+class __$TodoStateCopyWithImpl<$Res>
+    implements _$TodoStateCopyWith<$Res> {
+  __$TodoStateCopyWithImpl(this._self, this._then);
 
-  final _HomeState _self;
-  final $Res Function(_HomeState) _then;
+  final _TodoState _self;
+  final $Res Function(_TodoState) _then;
 
-/// Create a copy of HomeState
+/// Create a copy of TodoState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? todos = null,Object? showCompleted = null,Object? showTodos = null,}) {
-  return _then(_HomeState(
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? todos = null,Object? showCompleted = null,}) {
+  return _then(_TodoState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as HomeStatus,todos: null == todos ? _self._todos : todos // ignore: cast_nullable_to_non_nullable
+as TodoStatus,todos: null == todos ? _self._todos : todos // ignore: cast_nullable_to_non_nullable
 as List<Todo>,showCompleted: null == showCompleted ? _self.showCompleted : showCompleted // ignore: cast_nullable_to_non_nullable
-as bool,showTodos: null == showTodos ? _self.showTodos : showTodos // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

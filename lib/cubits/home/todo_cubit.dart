@@ -3,14 +3,12 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import '../../models/todo.dart';
 import 'todo_state.dart';
 
-class TodoCubit extends HydratedCubit<HomeState> {
-  TodoCubit() : super(HomeState.initial());
+class TodoCubit extends HydratedCubit<TodoState> {
+  TodoCubit() : super(TodoState.initial());
 
-  void addTodo(Todo todo) {
-    emit(
-      state.copyWith(todos: [...state.todos, todo], status: HomeStatus.addTodo),
-    );
-  }
+  void addTodo(Todo todo) => emit(
+    state.copyWith(todos: [...state.todos, todo], status: TodoStatus.addTodo),
+  );
 
   void updateTodo(int index, Todo todo) {
     final current = todo;
@@ -26,12 +24,12 @@ class TodoCubit extends HydratedCubit<HomeState> {
 
     final updatedTodos = [...state.todos]..[index] = updated;
 
-    emit(state.copyWith(todos: updatedTodos, status: HomeStatus.updateTodo));
+    emit(state.copyWith(todos: updatedTodos, status: TodoStatus.updateTodo));
   }
 
   void deleteTodo(int index) {
     final updatedTodos = [...state.todos]..removeAt(index);
-    emit(state.copyWith(todos: updatedTodos, status: HomeStatus.deleteTodo));
+    emit(state.copyWith(todos: updatedTodos, status: TodoStatus.deleteTodo));
   }
 
   void completeTodo(int index) {
@@ -42,17 +40,13 @@ class TodoCubit extends HydratedCubit<HomeState> {
   void toggleShowCompleted() => emit(
     state.copyWith(
       showCompleted: !state.showCompleted,
-      status: HomeStatus.showCompletedTodos,
+      status: TodoStatus.toggleShowCompletedTodos,
     ),
   );
 
-  void toggleShowTodos() => emit(
-    state.copyWith(showTodos: !state.showTodos, status: HomeStatus.showTodos),
-  );
+  @override
+  TodoState? fromJson(Map<String, dynamic> json) => TodoState.fromJson(json);
 
   @override
-  HomeState? fromJson(Map<String, dynamic> json) => HomeState.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson(HomeState state) => state.toJson();
+  Map<String, dynamic>? toJson(TodoState state) => state.toJson();
 }

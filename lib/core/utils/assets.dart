@@ -41,13 +41,5 @@ class Assets {
   /// Assets for logo
   /// assets/logo.png
   static const String logo = "assets/logo.png";
-
-  /// Assets for svgsArrowDown
-  /// assets/svgs/arrow-down.svg
-  static const String svgsArrowDown = "assets/svgs/arrow-down.svg";
-
-  /// Assets for svgsFlag
-  /// assets/svgs/flag.svg
-  static const String svgsFlag = "assets/svgs/flag.svg";
 }
 

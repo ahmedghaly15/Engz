@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/onboarding_bloc_listener.dart';
-import 'widgets/onboarding_controller.dart';
+import 'widgets/inherited_page_controller.dart';
 import 'widgets/onboarding_move_back_text_button.dart';
 import 'widgets/onboarding_move_next_button.dart';
 import 'widgets/onboarding_pages.dart';
@@ -31,7 +31,7 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   @override
   Widget build(BuildContext context) {
-    return OnboardingController(
+    return InheritedPageController(
       pageController: _pageController,
       child: Scaffold(
         body: SafeArea(

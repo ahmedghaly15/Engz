@@ -13,4 +13,8 @@ class AppStrings {
   static const String back = 'Back';
   static const String next = 'Next';
   static const String getStarted = 'Get started';
+  static const String completed = 'Completed';
+  static const String emptyTodosTitle = 'What do you want to do today?';
+  static const String emptyTodosDescription =
+      'Tap the + button to add your tasks and stay organized';
 }

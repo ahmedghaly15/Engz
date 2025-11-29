@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubits/onboarding/onboarding_cubit.dart';
 import '../../cubits/onboarding/onboarding_state.dart';
-import 'onboarding_controller.dart';
+import 'inherited_page_controller.dart';
 
 class OnboardingBlocListener extends StatelessWidget {
   const OnboardingBlocListener({super.key});
@@ -17,16 +17,16 @@ class OnboardingBlocListener extends StatelessWidget {
         const transitionDuration = Duration(milliseconds: 300);
         switch (state.status) {
           case OnboardingStatus.moveNext:
-            OnboardingController.of(
+            InheritedPageController.of(
               context,
             ).nextPage(duration: transitionDuration, curve: transitionCurve);
           case OnboardingStatus.moveBack:
-            OnboardingController.of(context).previousPage(
+            InheritedPageController.of(context).previousPage(
               duration: transitionDuration,
               curve: transitionCurve,
             );
           case OnboardingStatus.pageChanged:
-            OnboardingController.of(context).animateToPage(
+            InheritedPageController.of(context).animateToPage(
               state.currentPage,
               duration: transitionDuration,
               curve: transitionCurve,

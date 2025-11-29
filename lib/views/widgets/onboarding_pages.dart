@@ -7,7 +7,7 @@ import '../../cubits/onboarding/onboarding_cubit.dart';
 import '../../cubits/onboarding/onboarding_state.dart';
 import '../../models/onboarding.dart';
 import 'dot_indicator.dart';
-import 'onboarding_controller.dart';
+import 'inherited_page_controller.dart';
 
 class OnboardingPages extends StatelessWidget {
   const OnboardingPages({super.key});
@@ -18,7 +18,7 @@ class OnboardingPages extends StatelessWidget {
       builder: (context, onboardingPages) {
         final pagesCount = onboardingPages.length;
         return PageView.builder(
-          controller: OnboardingController.of(context),
+          controller: InheritedPageController.of(context),
           scrollDirection: .horizontal,
           itemCount: pagesCount,
           onPageChanged: context.read<OnboardingCubit>().onPageChanged,
