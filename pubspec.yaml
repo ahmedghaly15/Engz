@@ -26,6 +26,8 @@ dependencies:
   shadcn_ui: ^0.39.14
   # For simple cache processes
   shared_preferences: ^2.5.3
+  # Deals with date formatting
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -52,7 +54,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/svgs/
 
   fonts:
     - family: Lato
