@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/utils/app_strings.dart';
 import '../cubits/home/todo_cubit.dart';
 import '../cubits/home/todo_state.dart';
+import 'widgets/add_todo_fab.dart';
 import 'widgets/empty_todos.dart';
 import 'widgets/inherited_scroll_controller.dart';
 import 'widgets/todos_sliver_list_bloc_selector.dart';
@@ -65,6 +66,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
+      floatingActionButton: const AddTodoFAB(),
     );
   }
 }
