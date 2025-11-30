@@ -41,5 +41,13 @@ class Assets {
   /// Assets for logo
   /// assets/logo.png
   static const String logo = "assets/logo.png";
+
+  /// Assets for svgsPrimarySendIcon
+  /// assets/svgs/primary-send-icon.svg
+  static const String svgsPrimarySendIcon = "assets/svgs/primary-send-icon.svg";
+
+  /// Assets for svgsWhiteSendIcon
+  /// assets/svgs/white-send_icon.svg
+  static const String svgsWhiteSendIcon = "assets/svgs/white-send_icon.svg";
 }
 
