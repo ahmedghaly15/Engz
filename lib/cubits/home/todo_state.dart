@@ -29,7 +29,6 @@ enum TodoStatus {
 }
 
 extension TodoStatusExt on TodoStatus {
-  bool get isInitial => this == TodoStatus.initial;
   bool get isCompleteTodo => this == TodoStatus.completeTodo;
   bool get isAddTodo => this == TodoStatus.addTodo;
   bool get isUpdateTodo => this == TodoStatus.updateTodo;

@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../cubits/home/todo_cubit.dart';
+import '../../cubits/new_todo/new_todo_cubit.dart';
 import '../../cubits/onboarding/onboarding_cubit.dart';
 import '../cache/cache_helper.dart';
 
@@ -27,4 +28,5 @@ Future<void> _registerExternals() async {
 void _registerCubits() {
   getIt.registerFactory<OnboardingCubit>(() => OnboardingCubit());
   getIt.registerFactory<TodoCubit>(() => TodoCubit());
+  getIt.registerFactory<NewTodoCubit>(() => NewTodoCubit());
 }
