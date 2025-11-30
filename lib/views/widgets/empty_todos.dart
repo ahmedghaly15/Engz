@@ -17,10 +17,17 @@ class EmptyTodos extends StatelessWidget {
       children: [
         Image.asset(Assets.imagesEmptyTodos, fit: BoxFit.cover),
         SizedBox(height: 8.h),
-        Text(AppStrings.emptyTodosTitle, style: AppTextStyles.font20Regular),
+        FittedBox(
+          child: Text(
+            AppStrings.emptyTodosTitle,
+            style: AppTextStyles.font20Regular,
+            textAlign: TextAlign.center,
+          ),
+        ),
         Text(
           AppStrings.emptyTodosDescription,
-          style: AppTextStyles.font16Regular,
+          style: AppTextStyles.font12Regular,
+          textAlign: TextAlign.center,
         ),
       ],
     );

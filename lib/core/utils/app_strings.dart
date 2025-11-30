@@ -17,4 +17,7 @@ class AppStrings {
   static const String emptyTodosTitle = 'What do you want to do today?';
   static const String emptyTodosDescription =
       'Tap the + button to add your tasks and stay organized';
+  static const String addTask = 'Add Todo';
+  static const String description = 'Description';
+  static const String title = 'Title';
 }

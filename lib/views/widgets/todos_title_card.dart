@@ -6,6 +6,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../core/theming/app_text_styles.dart';
 import '../../cubits/home/todo_cubit.dart';
 import '../../cubits/home/todo_state.dart';
+import '../utils/fade_scale_transition_builder.dart';
 import 'inherited_scroll_controller.dart';
 
 class TodosTitleCard extends StatelessWidget {
@@ -57,15 +58,11 @@ class _IconBlocSelector extends StatelessWidget {
       selector: (state) => state.showCompleted,
       builder: (context, isCompletedShown) => AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
-        transitionBuilder: (child, animation) => FadeTransition(
-          opacity: animation,
-          child: ScaleTransition(scale: animation, child: child),
-        ),
+        transitionBuilder: fadeScaleTransitionBuilder,
         child: Icon(
           isCompletedShown ? LucideIcons.chevronUp : LucideIcons.chevronDown,
           key: ValueKey(isCompletedShown), // Important!
           color: Colors.white,
-          size: 20,
         ),
       ),
     );
