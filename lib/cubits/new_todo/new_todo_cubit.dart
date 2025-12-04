@@ -48,4 +48,15 @@ class NewTodoCubit extends Cubit<NewTodoState> {
       );
     }
   }
+
+  void selectPriority(int priority) {
+    if (state.todo!.priority != priority) {
+      emit(
+        state.copyWith(
+          todo: state.todo!.copyWith(priority: priority),
+          status: NewTodoStatus.selectPriority,
+        ),
+      );
+    }
+  }
 }

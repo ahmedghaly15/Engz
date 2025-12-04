@@ -22,4 +22,5 @@ class AppStrings {
   static const String title = 'Title';
   static const String chooseCategory = 'Choose Category';
   static const String addCategory = 'Add Category';
+  static const String taskPriority = 'Task Priority';
 }

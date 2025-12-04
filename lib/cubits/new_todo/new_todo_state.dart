@@ -11,6 +11,7 @@ enum NewTodoStatus {
   toggleSendButton,
   updateDate,
   selectCategory,
+  selectPriority,
 }
 
 @freezed
