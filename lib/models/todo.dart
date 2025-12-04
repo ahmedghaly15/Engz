@@ -13,8 +13,9 @@ sealed class Todo with _$Todo {
     String? description,
     DateTime? dateTime,
     Category? category,
-    int? priority,
-    bool? isCompleted,
+    @Default(1) int priority,
+    @Default(false) bool isCompleted,
   }) = _Todo;
+
   factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
 }

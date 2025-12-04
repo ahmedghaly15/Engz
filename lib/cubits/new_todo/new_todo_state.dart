@@ -1,17 +1,32 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../models/category.dart';
+import '../../models/todo.dart';
+
 part 'new_todo_state.freezed.dart';
 
-enum NewTodoStatus { initial, assignNewTodoContent, toggleSendButton }
+enum NewTodoStatus {
+  initial,
+  assignNewTodoContent,
+  toggleSendButton,
+  updateDate,
+}
 
 @freezed
 sealed class NewTodoState with _$NewTodoState {
   const factory NewTodoState({
     @Default(NewTodoStatus.initial) NewTodoStatus status,
     @Default(false) bool isSendButtonEnabled,
-    @Default('') String newTodoTitle,
-    @Default('') String newTodoDescription,
+    Todo? todo,
   }) = _NewTodoState;
 
-  factory NewTodoState.initial() => const NewTodoState();
+  factory NewTodoState.initial() => NewTodoState(
+    todo: Todo(
+      title: '',
+      description: '',
+      dateTime: DateTime.now(),
+      priority: 1,
+      category: const Category(CategoryType.grocery),
+    ),
+  );
 }

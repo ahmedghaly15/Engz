@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$NewTodoState {
 
- NewTodoStatus get status; bool get isSendButtonEnabled; String get newTodoTitle; String get newTodoDescription;
+ NewTodoStatus get status; bool get isSendButtonEnabled; Todo? get todo;
 /// Create a copy of NewTodoState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $NewTodoStateCopyWith<NewTodoState> get copyWith => _$NewTodoStateCopyWithImpl<N
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewTodoState&&(identical(other.status, status) || other.status == status)&&(identical(other.isSendButtonEnabled, isSendButtonEnabled) || other.isSendButtonEnabled == isSendButtonEnabled)&&(identical(other.newTodoTitle, newTodoTitle) || other.newTodoTitle == newTodoTitle)&&(identical(other.newTodoDescription, newTodoDescription) || other.newTodoDescription == newTodoDescription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewTodoState&&(identical(other.status, status) || other.status == status)&&(identical(other.isSendButtonEnabled, isSendButtonEnabled) || other.isSendButtonEnabled == isSendButtonEnabled)&&(identical(other.todo, todo) || other.todo == todo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,isSendButtonEnabled,newTodoTitle,newTodoDescription);
+int get hashCode => Object.hash(runtimeType,status,isSendButtonEnabled,todo);
 
 @override
 String toString() {
-  return 'NewTodoState(status: $status, isSendButtonEnabled: $isSendButtonEnabled, newTodoTitle: $newTodoTitle, newTodoDescription: $newTodoDescription)';
+  return 'NewTodoState(status: $status, isSendButtonEnabled: $isSendButtonEnabled, todo: $todo)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $NewTodoStateCopyWith<$Res>  {
   factory $NewTodoStateCopyWith(NewTodoState value, $Res Function(NewTodoState) _then) = _$NewTodoStateCopyWithImpl;
 @useResult
 $Res call({
- NewTodoStatus status, bool isSendButtonEnabled, String newTodoTitle, String newTodoDescription
+ NewTodoStatus status, bool isSendButtonEnabled, Todo? todo
 });
 
 
-
+$TodoCopyWith<$Res>? get todo;
 
 }
 /// @nodoc
@@ -62,16 +62,27 @@ class _$NewTodoStateCopyWithImpl<$Res>
 
 /// Create a copy of NewTodoState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? isSendButtonEnabled = null,Object? newTodoTitle = null,Object? newTodoDescription = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? isSendButtonEnabled = null,Object? todo = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as NewTodoStatus,isSendButtonEnabled: null == isSendButtonEnabled ? _self.isSendButtonEnabled : isSendButtonEnabled // ignore: cast_nullable_to_non_nullable
-as bool,newTodoTitle: null == newTodoTitle ? _self.newTodoTitle : newTodoTitle // ignore: cast_nullable_to_non_nullable
-as String,newTodoDescription: null == newTodoDescription ? _self.newTodoDescription : newTodoDescription // ignore: cast_nullable_to_non_nullable
-as String,
+as bool,todo: freezed == todo ? _self.todo : todo // ignore: cast_nullable_to_non_nullable
+as Todo?,
   ));
 }
+/// Create a copy of NewTodoState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TodoCopyWith<$Res>? get todo {
+    if (_self.todo == null) {
+    return null;
+  }
 
+  return $TodoCopyWith<$Res>(_self.todo!, (value) {
+    return _then(_self.copyWith(todo: value));
+  });
+}
 }
 
 
@@ -150,10 +161,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NewTodoStatus status,  bool isSendButtonEnabled,  String newTodoTitle,  String newTodoDescription)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NewTodoStatus status,  bool isSendButtonEnabled,  Todo? todo)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NewTodoState() when $default != null:
-return $default(_that.status,_that.isSendButtonEnabled,_that.newTodoTitle,_that.newTodoDescription);case _:
+return $default(_that.status,_that.isSendButtonEnabled,_that.todo);case _:
   return orElse();
 
 }
@@ -171,10 +182,10 @@ return $default(_that.status,_that.isSendButtonEnabled,_that.newTodoTitle,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NewTodoStatus status,  bool isSendButtonEnabled,  String newTodoTitle,  String newTodoDescription)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NewTodoStatus status,  bool isSendButtonEnabled,  Todo? todo)  $default,) {final _that = this;
 switch (_that) {
 case _NewTodoState():
-return $default(_that.status,_that.isSendButtonEnabled,_that.newTodoTitle,_that.newTodoDescription);}
+return $default(_that.status,_that.isSendButtonEnabled,_that.todo);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -188,10 +199,10 @@ return $default(_that.status,_that.isSendButtonEnabled,_that.newTodoTitle,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NewTodoStatus status,  bool isSendButtonEnabled,  String newTodoTitle,  String newTodoDescription)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NewTodoStatus status,  bool isSendButtonEnabled,  Todo? todo)?  $default,) {final _that = this;
 switch (_that) {
 case _NewTodoState() when $default != null:
-return $default(_that.status,_that.isSendButtonEnabled,_that.newTodoTitle,_that.newTodoDescription);case _:
+return $default(_that.status,_that.isSendButtonEnabled,_that.todo);case _:
   return null;
 
 }
@@ -203,13 +214,12 @@ return $default(_that.status,_that.isSendButtonEnabled,_that.newTodoTitle,_that.
 
 
 class _NewTodoState implements NewTodoState {
-  const _NewTodoState({this.status = NewTodoStatus.initial, this.isSendButtonEnabled = false, this.newTodoTitle = '', this.newTodoDescription = ''});
+  const _NewTodoState({this.status = NewTodoStatus.initial, this.isSendButtonEnabled = false, this.todo});
   
 
 @override@JsonKey() final  NewTodoStatus status;
 @override@JsonKey() final  bool isSendButtonEnabled;
-@override@JsonKey() final  String newTodoTitle;
-@override@JsonKey() final  String newTodoDescription;
+@override final  Todo? todo;
 
 /// Create a copy of NewTodoState
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +231,16 @@ _$NewTodoStateCopyWith<_NewTodoState> get copyWith => __$NewTodoStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewTodoState&&(identical(other.status, status) || other.status == status)&&(identical(other.isSendButtonEnabled, isSendButtonEnabled) || other.isSendButtonEnabled == isSendButtonEnabled)&&(identical(other.newTodoTitle, newTodoTitle) || other.newTodoTitle == newTodoTitle)&&(identical(other.newTodoDescription, newTodoDescription) || other.newTodoDescription == newTodoDescription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewTodoState&&(identical(other.status, status) || other.status == status)&&(identical(other.isSendButtonEnabled, isSendButtonEnabled) || other.isSendButtonEnabled == isSendButtonEnabled)&&(identical(other.todo, todo) || other.todo == todo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,isSendButtonEnabled,newTodoTitle,newTodoDescription);
+int get hashCode => Object.hash(runtimeType,status,isSendButtonEnabled,todo);
 
 @override
 String toString() {
-  return 'NewTodoState(status: $status, isSendButtonEnabled: $isSendButtonEnabled, newTodoTitle: $newTodoTitle, newTodoDescription: $newTodoDescription)';
+  return 'NewTodoState(status: $status, isSendButtonEnabled: $isSendButtonEnabled, todo: $todo)';
 }
 
 
@@ -241,11 +251,11 @@ abstract mixin class _$NewTodoStateCopyWith<$Res> implements $NewTodoStateCopyWi
   factory _$NewTodoStateCopyWith(_NewTodoState value, $Res Function(_NewTodoState) _then) = __$NewTodoStateCopyWithImpl;
 @override @useResult
 $Res call({
- NewTodoStatus status, bool isSendButtonEnabled, String newTodoTitle, String newTodoDescription
+ NewTodoStatus status, bool isSendButtonEnabled, Todo? todo
 });
 
 
-
+@override $TodoCopyWith<$Res>? get todo;
 
 }
 /// @nodoc
@@ -258,17 +268,28 @@ class __$NewTodoStateCopyWithImpl<$Res>
 
 /// Create a copy of NewTodoState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? isSendButtonEnabled = null,Object? newTodoTitle = null,Object? newTodoDescription = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? isSendButtonEnabled = null,Object? todo = freezed,}) {
   return _then(_NewTodoState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as NewTodoStatus,isSendButtonEnabled: null == isSendButtonEnabled ? _self.isSendButtonEnabled : isSendButtonEnabled // ignore: cast_nullable_to_non_nullable
-as bool,newTodoTitle: null == newTodoTitle ? _self.newTodoTitle : newTodoTitle // ignore: cast_nullable_to_non_nullable
-as String,newTodoDescription: null == newTodoDescription ? _self.newTodoDescription : newTodoDescription // ignore: cast_nullable_to_non_nullable
-as String,
+as bool,todo: freezed == todo ? _self.todo : todo // ignore: cast_nullable_to_non_nullable
+as Todo?,
   ));
 }
 
+/// Create a copy of NewTodoState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TodoCopyWith<$Res>? get todo {
+    if (_self.todo == null) {
+    return null;
+  }
 
+  return $TodoCopyWith<$Res>(_self.todo!, (value) {
+    return _then(_self.copyWith(todo: value));
+  });
+}
 }
 
 // dart format on

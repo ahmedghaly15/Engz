@@ -15,8 +15,8 @@ _Todo _$TodoFromJson(Map<String, dynamic> json) => _Todo(
   category: json['category'] == null
       ? null
       : Category.fromJson(json['category'] as Map<String, dynamic>),
-  priority: (json['priority'] as num?)?.toInt(),
-  isCompleted: json['isCompleted'] as bool?,
+  priority: (json['priority'] as num?)?.toInt() ?? 1,
+  isCompleted: json['isCompleted'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$TodoToJson(_Todo instance) => <String, dynamic>{

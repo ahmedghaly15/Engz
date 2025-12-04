@@ -57,3 +57,40 @@ extension ShowShadSheet<T> on BuildContext {
     ),
   );
 }
+
+extension ShadThemeAccess on BuildContext {
+  ShadThemeData get shadTheme => ShadTheme.of(this);
+  ShadTextTheme get shadTextTheme => shadTheme.textTheme;
+}
+
+extension ShowDatePicker on BuildContext {
+  Future<DateTime?> showDatePicker(void Function(DateTime?)? onChanged) =>
+      showDialog<DateTime?>(
+        context: this,
+        builder: (_) => Align(
+          alignment: Alignment.center,
+          child: ShadCalendar(onChanged: onChanged),
+        ),
+      );
+}
+
+extension CapitalizeString on String {
+  String capitalize() => "${this[0].toUpperCase()}${substring(1)}";
+}
+
+extension ShowShadDialog<T> on BuildContext {
+  Future<T?> showDialog({
+    Widget? title,
+    String? titleText,
+    Widget? child,
+    List<Widget> actions = const [],
+  }) => showShadDialog(
+    useRootNavigator: true,
+    context: this,
+    builder: (_) => ShadDialog(
+      title: title ?? (titleText != null ? Text(titleText) : null),
+      child: child,
+      actions: actions,
+    ),
+  );
+}

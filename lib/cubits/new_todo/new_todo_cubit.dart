@@ -5,19 +5,35 @@ import 'new_todo_state.dart';
 class NewTodoCubit extends Cubit<NewTodoState> {
   NewTodoCubit() : super(NewTodoState.initial());
 
-  void assignNewTodoContent({String? title, String? description}) => emit(
-    state.copyWith(
-      newTodoTitle: title ?? state.newTodoTitle,
-      newTodoDescription: description ?? state.newTodoDescription,
-      status: NewTodoStatus.assignNewTodoContent,
-    ),
-  );
+  void assignNewTodoContent({String? title, String? description}) {
+    final oldTitle = state.todo!.title;
+    final oldDescription = state.todo!.description;
+    emit(
+      state.copyWith(
+        todo: state.todo!.copyWith(
+          title: title ?? oldTitle,
+          description: description ?? oldDescription,
+        ),
+        status: NewTodoStatus.assignNewTodoContent,
+      ),
+    );
+  }
 
-  void toggleSendButton() => emit(
+  void toggleSendButton() {
+    final todo = state.todo;
+    emit(
+      state.copyWith(
+        isSendButtonEnabled:
+            todo!.title!.isNotEmpty && todo.description!.isNotEmpty,
+        status: NewTodoStatus.toggleSendButton,
+      ),
+    );
+  }
+
+  void assignDate(DateTime? dateTime) => emit(
     state.copyWith(
-      isSendButtonEnabled:
-          state.newTodoTitle.isNotEmpty && state.newTodoDescription.isNotEmpty,
-      status: NewTodoStatus.toggleSendButton,
+      todo: state.todo!.copyWith(dateTime: dateTime),
+      status: NewTodoStatus.updateDate,
     ),
   );
 }
