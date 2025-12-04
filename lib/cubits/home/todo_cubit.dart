@@ -6,9 +6,12 @@ import 'todo_state.dart';
 class TodoCubit extends HydratedCubit<TodoState> {
   TodoCubit() : super(TodoState.initial());
 
-  void addTodo(Todo todo) => emit(
-    state.copyWith(todos: [...state.todos, todo], status: TodoStatus.addTodo),
-  );
+  void addTodo(Todo todo) {
+    final updatedTodos = [...state.todos, todo];
+    final orderedTodos = updatedTodos
+      ..sort((a, b) => b.dateTime!.compareTo(a.dateTime!));
+    emit(state.copyWith(todos: orderedTodos, status: TodoStatus.addTodo));
+  }
 
   void updateTodo(int index, Todo todo) {
     final current = todo;
@@ -32,9 +35,11 @@ class TodoCubit extends HydratedCubit<TodoState> {
     emit(state.copyWith(todos: updatedTodos, status: TodoStatus.deleteTodo));
   }
 
-  void completeTodo(int index) {
-    final updated = state.todos[index].copyWith(isCompleted: true);
-    updateTodo(index, updated);
+  void toggleCompleteTodo(int index) {
+    final current = state.todos[index];
+    final updated = current.copyWith(isCompleted: !current.isCompleted);
+    final updatedTodos = [...state.todos]..[index] = updated;
+    emit(state.copyWith(todos: updatedTodos, status: TodoStatus.completeTodo));
   }
 
   void toggleShowCompleted() => emit(

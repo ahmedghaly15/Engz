@@ -9,6 +9,7 @@ part 'todo.g.dart';
 sealed class Todo with _$Todo {
   @JsonSerializable(explicitToJson: true)
   const factory Todo({
+    required String id,
     String? title,
     String? description,
     DateTime? dateTime,

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Todo {
 
- String? get title; String? get description; DateTime? get dateTime; CategoryType? get category; int get priority; bool get isCompleted;
+ String get id; String? get title; String? get description; DateTime? get dateTime; CategoryType? get category; int get priority; bool get isCompleted;
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $TodoCopyWith<Todo> get copyWith => _$TodoCopyWithImpl<Todo>(this as Todo, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Todo&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime)&&(identical(other.category, category) || other.category == category)&&(identical(other.priority, priority) || other.priority == priority)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Todo&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime)&&(identical(other.category, category) || other.category == category)&&(identical(other.priority, priority) || other.priority == priority)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,dateTime,category,priority,isCompleted);
+int get hashCode => Object.hash(runtimeType,id,title,description,dateTime,category,priority,isCompleted);
 
 @override
 String toString() {
-  return 'Todo(title: $title, description: $description, dateTime: $dateTime, category: $category, priority: $priority, isCompleted: $isCompleted)';
+  return 'Todo(id: $id, title: $title, description: $description, dateTime: $dateTime, category: $category, priority: $priority, isCompleted: $isCompleted)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $TodoCopyWith<$Res>  {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) _then) = _$TodoCopyWithImpl;
 @useResult
 $Res call({
- String? title, String? description, DateTime? dateTime, CategoryType? category, int priority, bool isCompleted
+ String id, String? title, String? description, DateTime? dateTime, CategoryType? category, int priority, bool isCompleted
 });
 
 
@@ -65,9 +65,10 @@ class _$TodoCopyWithImpl<$Res>
 
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? description = freezed,Object? dateTime = freezed,Object? category = freezed,Object? priority = null,Object? isCompleted = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = freezed,Object? description = freezed,Object? dateTime = freezed,Object? category = freezed,Object? priority = null,Object? isCompleted = null,}) {
   return _then(_self.copyWith(
-title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,dateTime: freezed == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
 as DateTime?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? description,  DateTime? dateTime,  CategoryType? category,  int priority,  bool isCompleted)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? title,  String? description,  DateTime? dateTime,  CategoryType? category,  int priority,  bool isCompleted)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Todo() when $default != null:
-return $default(_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);case _:
+return $default(_that.id,_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.title,_that.description,_that.dateTime,_that.category,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? description,  DateTime? dateTime,  CategoryType? category,  int priority,  bool isCompleted)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? title,  String? description,  DateTime? dateTime,  CategoryType? category,  int priority,  bool isCompleted)  $default,) {final _that = this;
 switch (_that) {
 case _Todo():
-return $default(_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);}
+return $default(_that.id,_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -193,10 +194,10 @@ return $default(_that.title,_that.description,_that.dateTime,_that.category,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? description,  DateTime? dateTime,  CategoryType? category,  int priority,  bool isCompleted)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? title,  String? description,  DateTime? dateTime,  CategoryType? category,  int priority,  bool isCompleted)?  $default,) {final _that = this;
 switch (_that) {
 case _Todo() when $default != null:
-return $default(_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);case _:
+return $default(_that.id,_that.title,_that.description,_that.dateTime,_that.category,_that.priority,_that.isCompleted);case _:
   return null;
 
 }
@@ -208,9 +209,10 @@ return $default(_that.title,_that.description,_that.dateTime,_that.category,_tha
 
 @JsonSerializable(explicitToJson: true)
 class _Todo implements Todo {
-  const _Todo({this.title, this.description, this.dateTime, this.category, this.priority = 1, this.isCompleted = false});
+  const _Todo({required this.id, this.title, this.description, this.dateTime, this.category, this.priority = 1, this.isCompleted = false});
   factory _Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
 
+@override final  String id;
 @override final  String? title;
 @override final  String? description;
 @override final  DateTime? dateTime;
@@ -231,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Todo&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime)&&(identical(other.category, category) || other.category == category)&&(identical(other.priority, priority) || other.priority == priority)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Todo&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime)&&(identical(other.category, category) || other.category == category)&&(identical(other.priority, priority) || other.priority == priority)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,description,dateTime,category,priority,isCompleted);
+int get hashCode => Object.hash(runtimeType,id,title,description,dateTime,category,priority,isCompleted);
 
 @override
 String toString() {
-  return 'Todo(title: $title, description: $description, dateTime: $dateTime, category: $category, priority: $priority, isCompleted: $isCompleted)';
+  return 'Todo(id: $id, title: $title, description: $description, dateTime: $dateTime, category: $category, priority: $priority, isCompleted: $isCompleted)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   factory _$TodoCopyWith(_Todo value, $Res Function(_Todo) _then) = __$TodoCopyWithImpl;
 @override @useResult
 $Res call({
- String? title, String? description, DateTime? dateTime, CategoryType? category, int priority, bool isCompleted
+ String id, String? title, String? description, DateTime? dateTime, CategoryType? category, int priority, bool isCompleted
 });
 
 
@@ -268,9 +270,10 @@ class __$TodoCopyWithImpl<$Res>
 
 /// Create a copy of Todo
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? description = freezed,Object? dateTime = freezed,Object? category = freezed,Object? priority = null,Object? isCompleted = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = freezed,Object? description = freezed,Object? dateTime = freezed,Object? category = freezed,Object? priority = null,Object? isCompleted = null,}) {
   return _then(_Todo(
-title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,dateTime: freezed == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
 as DateTime?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
