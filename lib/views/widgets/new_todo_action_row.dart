@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../core/di/di.dart';
 import '../../core/helpers/extensions.dart';
 import '../../core/utils/app_strings.dart';
 import '../../core/utils/assets.dart';
@@ -26,13 +27,19 @@ class NewTodoActionRow extends StatelessWidget {
           icon: const Icon(LucideIcons.calendar),
         ),
         IconButton(
-          onPressed: () => context.showDialog(
-            titleText: AppStrings.chooseCategory,
-            child: const ResponsiveCategoriesGridView(),
-            actions: [
-              PrimaryButton(onPressed: () {}, text: AppStrings.addCategory),
-            ],
+          onPressed: () => context.showShadCnDialog(
+            (_) => BlocProvider<NewTodoCubit>.value(
+              value: getIt<NewTodoCubit>(),
+              child: ShadDialog(
+                title: const Text(AppStrings.chooseCategory),
+                child: const ResponsiveCategoriesGridView(),
+                actions: [
+                  PrimaryButton(onPressed: () {}, text: AppStrings.addCategory),
+                ],
+              ),
+            ),
           ),
+
           icon: const Icon(LucideIcons.layoutGrid),
         ),
         IconButton(onPressed: () {}, icon: const Icon(LucideIcons.flag)),

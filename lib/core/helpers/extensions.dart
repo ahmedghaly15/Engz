@@ -79,18 +79,6 @@ extension CapitalizeString on String {
 }
 
 extension ShowShadDialog<T> on BuildContext {
-  Future<T?> showDialog({
-    Widget? title,
-    String? titleText,
-    Widget? child,
-    List<Widget> actions = const [],
-  }) => showShadDialog(
-    useRootNavigator: true,
-    context: this,
-    builder: (_) => ShadDialog(
-      title: title ?? (titleText != null ? Text(titleText) : null),
-      child: child,
-      actions: actions,
-    ),
-  );
+  Future<T?> showShadCnDialog(Widget Function(BuildContext) builder) =>
+      showShadDialog(useRootNavigator: true, context: this, builder: builder);
 }
