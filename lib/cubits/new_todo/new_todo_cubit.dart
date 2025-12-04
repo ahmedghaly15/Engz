@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../models/category.dart';
 import 'new_todo_state.dart';
 
 class NewTodoCubit extends Cubit<NewTodoState> {
@@ -36,4 +37,15 @@ class NewTodoCubit extends Cubit<NewTodoState> {
       status: NewTodoStatus.updateDate,
     ),
   );
+
+  void selectCategory(CategoryType type) {
+    if (state.todo!.category != type) {
+      emit(
+        state.copyWith(
+          todo: state.todo!.copyWith(category: type),
+          status: NewTodoStatus.selectCategory,
+        ),
+      );
+    }
+  }
 }

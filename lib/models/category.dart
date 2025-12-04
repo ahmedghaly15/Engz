@@ -1,10 +1,9 @@
-import 'package:engz/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'category.freezed.dart';
-part 'category.g.dart';
+import '../core/helpers/extensions.dart';
 
+@JsonEnum()
 enum CategoryType {
   grocery,
   work,
@@ -16,13 +15,6 @@ enum CategoryType {
   health,
   movie,
   home,
-}
-
-@freezed
-sealed class Category with _$Category {
-  const factory Category(CategoryType type) = _Category;
-  factory Category.fromJson(Map<String, dynamic> json) =>
-      _$CategoryFromJson(json);
 }
 
 extension CategoryExtension on CategoryType {

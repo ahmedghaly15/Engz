@@ -10,6 +10,7 @@ enum NewTodoStatus {
   assignNewTodoContent,
   toggleSendButton,
   updateDate,
+  selectCategory,
 }
 
 @freezed
@@ -26,7 +27,7 @@ sealed class NewTodoState with _$NewTodoState {
       description: '',
       dateTime: DateTime.now(),
       priority: 1,
-      category: const Category(CategoryType.grocery),
+      category: CategoryType.grocery,
     ),
   );
 }

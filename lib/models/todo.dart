@@ -12,7 +12,7 @@ sealed class Todo with _$Todo {
     String? title,
     String? description,
     DateTime? dateTime,
-    Category? category,
+    CategoryType? category,
     @Default(1) int priority,
     @Default(false) bool isCompleted,
   }) = _Todo;
