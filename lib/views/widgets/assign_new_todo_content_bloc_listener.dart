@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubits/new_todo/new_todo_cubit.dart';
 import '../../cubits/new_todo/new_todo_state.dart';
+import '../../models/todo.dart';
 
 class AssignNewTodoContentBlocListener extends StatelessWidget {
   const AssignNewTodoContentBlocListener({super.key});
@@ -10,8 +11,7 @@ class AssignNewTodoContentBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<NewTodoCubit, NewTodoState>(
-      listenWhen: (_, current) =>
-          _listenWhen(current.newTodoTitle, current.newTodoDescription),
+      listenWhen: (_, current) => _listenWhen(current.todo!),
       listener: (_, state) {
         switch (state.status) {
           case NewTodoStatus.assignNewTodoContent:
@@ -25,6 +25,6 @@ class AssignNewTodoContentBlocListener extends StatelessWidget {
     );
   }
 
-  bool _listenWhen(String newTodoTitle, String newTodoDescription) =>
-      newTodoTitle.isNotEmpty || newTodoDescription.isNotEmpty;
+  bool _listenWhen(Todo todo) =>
+      todo.title!.isNotEmpty || todo.description!.isNotEmpty;
 }

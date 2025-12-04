@@ -28,7 +28,7 @@ class TodoCard extends StatelessWidget {
         leading: Container(
           margin: EdgeInsetsDirectional.only(end: 16.w),
           child: ShadCheckbox(
-            value: todo.isCompleted!,
+            value: todo.isCompleted,
             decoration: ShadDecoration(
               shape: BoxShape.circle,
               border: ShadBorder.all(
