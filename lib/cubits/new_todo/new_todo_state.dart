@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
-import '../../core/utils/functions/generate_random_id.dart';
 import '../../models/category.dart';
 import '../../models/todo.dart';
 
@@ -25,7 +25,7 @@ sealed class NewTodoState with _$NewTodoState {
 
   factory NewTodoState.initial() => NewTodoState(
     todo: Todo(
-      id: generateRandomId(),
+      id: const Uuid().v4(),
       title: '',
       description: '',
       dateTime: DateTime.now(),
