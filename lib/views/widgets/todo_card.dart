@@ -36,7 +36,8 @@ class TodoCard extends StatelessWidget {
                 color: Colors.white.withAlpha((0.87 * 255).round()),
               ),
             ),
-            onChanged: (_) => context.read<TodoCubit>().completeTodo(index),
+            onChanged: (_) =>
+                context.read<TodoCubit>().toggleCompleteTodo(index),
           ),
         ),
         title: Text(todo.title!, style: AppTextStyles.font16Regular),

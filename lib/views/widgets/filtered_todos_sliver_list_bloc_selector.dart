@@ -9,8 +9,11 @@ import 'todo_card.dart';
 
 enum TodoFilter { all, completed }
 
-class TodosSliverListBlocSelector extends StatelessWidget {
-  const TodosSliverListBlocSelector({super.key, this.filter = TodoFilter.all});
+class FilteredTodosSliverListBlocSelector extends StatelessWidget {
+  const FilteredTodosSliverListBlocSelector({
+    super.key,
+    this.filter = TodoFilter.all,
+  });
 
   final TodoFilter filter;
 
@@ -18,11 +21,10 @@ class TodosSliverListBlocSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocSelector<TodoCubit, TodoState, List<Todo>>(
       selector: (state) => _filterTodos(state.todos),
-      builder: (context, todos) => SliverList.separated(
+      builder: (_, todos) => SliverList.separated(
         itemCount: todos.length,
         itemBuilder: (_, index) {
-          final todo = todos[index];
-          return TodoCard(todo: todo, index: index);
+          return TodoCard(todo: todos[index], index: index);
         },
         separatorBuilder: (_, _) => SizedBox(height: 16.h),
       ),
@@ -34,7 +36,7 @@ class TodosSliverListBlocSelector extends StatelessWidget {
       case TodoFilter.all:
         return todos;
       case TodoFilter.completed:
-        return todos.where((todo) => todo.isCompleted == true).toList();
+        return todos.where((todo) => todo.isCompleted).toList();
     }
   }
 }

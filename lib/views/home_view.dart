@@ -8,7 +8,7 @@ import '../cubits/home/todo_state.dart';
 import 'widgets/add_todo_fab.dart';
 import 'widgets/empty_todos.dart';
 import 'widgets/inherited_scroll_controller.dart';
-import 'widgets/todos_sliver_list_bloc_selector.dart';
+import 'widgets/filtered_todos_sliver_list_bloc_selector.dart';
 import 'widgets/todos_title_card.dart';
 
 class HomeView extends StatefulWidget {
@@ -47,12 +47,17 @@ class _HomeViewState extends State<HomeView> {
                 return isNotEmpty
                     ? CustomScrollView(
                         controller: _scrollController,
-                        slivers: const [
-                          TodosSliverListBlocSelector(),
-                          SliverToBoxAdapter(
-                            child: TodosTitleCard(title: AppStrings.completed),
+                        slivers: [
+                          const FilteredTodosSliverListBlocSelector(),
+                          SliverPadding(
+                            padding: .symmetric(vertical: 24.h),
+                            sliver: const SliverToBoxAdapter(
+                              child: TodosTitleCard(
+                                title: AppStrings.completed,
+                              ),
+                            ),
                           ),
-                          TodosSliverListBlocSelector(
+                          const FilteredTodosSliverListBlocSelector(
                             filter: TodoFilter.completed,
                           ),
                         ],

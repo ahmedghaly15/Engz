@@ -19,8 +19,8 @@ class AddTodoFAB extends StatelessWidget {
         titleText: AppStrings.addTask,
         child: MultiBlocProvider(
           providers: [
-            BlocProvider<NewTodoCubit>.value(value: getIt<NewTodoCubit>()),
-            BlocProvider<TodoCubit>.value(value: getIt<TodoCubit>()),
+            BlocProvider<NewTodoCubit>(create: (_) => getIt<NewTodoCubit>()),
+            BlocProvider<TodoCubit>.value(value: context.read<TodoCubit>()),
           ],
           child: const AddTodoSheetContent(),
         ),
