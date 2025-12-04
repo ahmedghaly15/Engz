@@ -23,9 +23,7 @@ class FilteredTodosSliverListBlocSelector extends StatelessWidget {
       selector: (state) => _filterTodos(state.todos),
       builder: (_, todos) => SliverList.separated(
         itemCount: todos.length,
-        itemBuilder: (_, index) {
-          return TodoCard(todo: todos[index], index: index);
-        },
+        itemBuilder: (_, index) => TodoCard(todo: todos[index], index: index),
         separatorBuilder: (_, _) => SizedBox(height: 16.h),
       ),
     );
@@ -34,7 +32,7 @@ class FilteredTodosSliverListBlocSelector extends StatelessWidget {
   List<Todo> _filterTodos(List<Todo> todos) {
     switch (filter) {
       case TodoFilter.all:
-        return todos;
+        return todos.where((todo) => !todo.isCompleted).toList();
       case TodoFilter.completed:
         return todos.where((todo) => todo.isCompleted).toList();
     }
