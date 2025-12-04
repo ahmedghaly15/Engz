@@ -15,6 +15,7 @@ class AppThemes {
       primary: AppColors.primary,
       foreground: Colors.white,
       primaryForeground: Colors.white,
+      border: Colors.transparent,
     ),
     brightness: Brightness.dark,
     primaryButtonTheme: ShadButtonTheme(
@@ -56,6 +57,34 @@ class AppThemes {
       titleStyle: AppTextStyles.font20Bold,
       descriptionStyle: AppTextStyles.font16Regular,
       removeBorderRadiusWhenTiny: false,
+    ),
+    calendarTheme: ShadCalendarTheme(
+      decoration: ShadDecoration(
+        color: AppColors.color363636,
+        border: ShadBorder.all(
+          padding: .symmetric(horizontal: 16.w, vertical: 8.h),
+          radius: BorderRadius.circular(4.r),
+        ),
+      ),
+      headerPadding: .symmetric(vertical: 8.h),
+      weekdaysPadding: .symmetric(vertical: 8.h),
+      dayButtonPadding: .symmetric(horizontal: 8.w, vertical: 8.h),
+      monthSelectorPadding: .symmetric(horizontal: 8.w),
+    ),
+    primaryDialogTheme: ShadDialogTheme(
+      backgroundColor: AppColors.color363636,
+      radius: .circular(4.r),
+      scrollable: false,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .start,
+      titleStyle: AppTextStyles.font16Bold,
+      titleTextAlign: TextAlign.center,
+      padding: .symmetric(horizontal: 18.w),
+      constraints: const BoxConstraints(maxWidth: 327, maxHeight: 650),
+      actionsMainAxisAlignment: .center,
+      actionsAxis: .vertical,
+      actionsMainAxisSize: .min,
+      gap: 16.h,
     ),
   );
 

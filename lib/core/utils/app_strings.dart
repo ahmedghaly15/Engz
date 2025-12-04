@@ -20,4 +20,6 @@ class AppStrings {
   static const String addTask = 'Add Todo';
   static const String description = 'Description';
   static const String title = 'Title';
+  static const String chooseCategory = 'Choose Category';
+  static const String addCategory = 'Add Category';
 }
