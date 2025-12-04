@@ -8,8 +8,8 @@ import '../../cubits/new_todo/new_todo_cubit.dart';
 import '../../cubits/new_todo/new_todo_state.dart';
 import '../../models/category.dart';
 
-class ResponsiveCategoriesGridView extends StatelessWidget {
-  const ResponsiveCategoriesGridView({super.key});
+class ResponsiveNewTodoCategoryGridView extends StatelessWidget {
+  const ResponsiveNewTodoCategoryGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class ResponsiveCategoriesGridView extends StatelessWidget {
                           selector: (state) => state.todo!.category == type,
                           builder: (context, isSelected) => AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            padding: EdgeInsets.all(dialogWidth * 0.08),
+                            padding: .all(dialogWidth * 0.08),
                             decoration: BoxDecoration(
                               color: type.color,
                               borderRadius: .circular(6.r),
