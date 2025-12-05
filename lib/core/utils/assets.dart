@@ -42,6 +42,10 @@ class Assets {
   /// assets/logo.png
   static const String logo = "assets/logo.png";
 
+  /// Assets for lottiesComingSoon
+  /// assets/lotties/coming-soon.json
+  static const String lottiesComingSoon = "assets/lotties/coming-soon.json";
+
   /// Assets for svgsDesignIcon
   /// assets/svgs/design-icon.svg
   static const String svgsDesignIcon = "assets/svgs/design-icon.svg";
