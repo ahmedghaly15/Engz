@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../core/helpers/input_validator.dart';
 import '../../core/utils/app_strings.dart';
 import '../../core/widgets/custom_input_form_field.dart';
-import '../../cubits/new_todo/new_todo_cubit.dart';
 import 'inherited_form_attributes.dart';
 
-class AddTodoForm extends StatelessWidget {
-  const AddTodoForm({super.key});
+class TodoContentForm extends StatelessWidget {
+  const TodoContentForm({
+    super.key,
+    void Function(String)? titleFieldOnChanged,
+    void Function(String)? descriptionFieldOnChanged,
+  }) : _titleFieldOnChanged = titleFieldOnChanged,
+       _descriptionFieldOnChanged = descriptionFieldOnChanged;
+
+  final void Function(String)? _titleFieldOnChanged, _descriptionFieldOnChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,9 @@ class AddTodoForm extends StatelessWidget {
             placeholderText: AppStrings.title,
             validator: (value) => InputValidator.validateField(value),
             onChanged: (value) {
-              context.read<NewTodoCubit>().assignNewTodoContent(title: value);
+              if (_titleFieldOnChanged != null) {
+                _titleFieldOnChanged(value);
+              }
               formAttributes.titleController.text = value;
             },
           ),
@@ -38,9 +45,9 @@ class AddTodoForm extends StatelessWidget {
             maxLines: 2,
             validator: (value) => InputValidator.validateField(value),
             onChanged: (value) {
-              context.read<NewTodoCubit>().assignNewTodoContent(
-                description: value,
-              );
+              if (_descriptionFieldOnChanged != null) {
+                _descriptionFieldOnChanged(value);
+              }
               formAttributes.descriptionController.text = value;
             },
             maxLength: null,
