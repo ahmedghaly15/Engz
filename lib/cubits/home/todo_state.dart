@@ -21,7 +21,7 @@ sealed class TodoState with _$TodoState {
 
 enum TodoStatus {
   initial,
-  completeTodo,
+  toggleCompleteTodo,
   addTodo,
   updateTodo,
   deleteTodo,
@@ -29,7 +29,6 @@ enum TodoStatus {
 }
 
 extension TodoStatusExt on TodoStatus {
-  bool get isCompleteTodo => this == TodoStatus.completeTodo;
   bool get isAddTodo => this == TodoStatus.addTodo;
   bool get isUpdateTodo => this == TodoStatus.updateTodo;
   bool get isDeleteTodo => this == TodoStatus.deleteTodo;

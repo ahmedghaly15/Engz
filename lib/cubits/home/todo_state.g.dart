@@ -27,7 +27,7 @@ Map<String, dynamic> _$TodoStateToJson(_TodoState instance) =>
 
 const _$TodoStatusEnumMap = {
   TodoStatus.initial: 'initial',
-  TodoStatus.completeTodo: 'completeTodo',
+  TodoStatus.toggleCompleteTodo: 'toggleCompleteTodo',
   TodoStatus.addTodo: 'addTodo',
   TodoStatus.updateTodo: 'updateTodo',
   TodoStatus.deleteTodo: 'deleteTodo',

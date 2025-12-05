@@ -100,7 +100,7 @@ class TodoCard extends StatelessWidget {
             color: Colors.white.withAlpha((0.87 * 255).round()),
           ),
         ),
-        onChanged: (_) => context.read<TodoCubit>().toggleCompleteTodo(index),
+        onChanged: (_) => context.read<TodoCubit>().toggleCompleteTodo(todo.id),
       ),
     );
   }

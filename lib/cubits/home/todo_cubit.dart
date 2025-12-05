@@ -35,11 +35,20 @@ class TodoCubit extends HydratedCubit<TodoState> {
     emit(state.copyWith(todos: updatedTodos, status: TodoStatus.deleteTodo));
   }
 
-  void toggleCompleteTodo(int index) {
-    final current = state.todos[index];
-    final updated = current.copyWith(isCompleted: !current.isCompleted);
-    final updatedTodos = [...state.todos]..[index] = updated;
-    emit(state.copyWith(todos: updatedTodos, status: TodoStatus.completeTodo));
+  void toggleCompleteTodo(String id) {
+    final updatedTodos = state.todos
+        .map(
+          (todo) => todo.id == id
+              ? todo.copyWith(isCompleted: !todo.isCompleted)
+              : todo,
+        )
+        .toList();
+    emit(
+      state.copyWith(
+        todos: updatedTodos,
+        status: TodoStatus.toggleCompleteTodo,
+      ),
+    );
   }
 
   void toggleShowCompleted() => emit(
