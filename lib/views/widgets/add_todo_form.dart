@@ -43,6 +43,7 @@ class AddTodoForm extends StatelessWidget {
               );
               formAttributes.descriptionController.text = value;
             },
+            maxLength: null,
           ),
         ],
       ),

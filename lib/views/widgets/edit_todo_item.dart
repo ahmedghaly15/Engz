@@ -20,10 +20,7 @@ class EditTodoItem extends StatelessWidget {
       rowCrossAxisAlignment: .start,
       radius: .all(.circular(4.r)),
       padding: .symmetric(vertical: 12.h, horizontal: 10.w),
-      leading: TodoCompleteCheckbox(
-        isCompleted: _todo.isCompleted,
-        id: _todo.id,
-      ),
+      leading: TodoCompleteCheckbox(isCompleted: _todo.isCompleted),
       title: Container(
         margin: .only(bottom: 15.h),
         child: Text(_todo.title!, style: AppTextStyles.font20Regular),

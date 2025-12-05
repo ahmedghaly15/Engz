@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -6,6 +7,7 @@ import '../../core/helpers/extensions.dart';
 import '../../core/router/routes.dart';
 import '../../core/theming/app_colors.dart';
 import '../../core/theming/app_text_styles.dart';
+import '../../cubits/home/todo_cubit.dart';
 import '../../models/todo.dart';
 import 'todo_complete_checkbox.dart';
 
@@ -27,7 +29,8 @@ class TodoCard extends StatelessWidget {
         padding: .symmetric(vertical: 12.h, horizontal: 10.w),
         leading: TodoCompleteCheckbox(
           isCompleted: _todo.isCompleted,
-          id: _todo.id,
+          onChanged: (_) =>
+              context.read<TodoCubit>().toggleCompleteTodo(_todo.id),
         ),
         title: Text(_todo.title!, style: AppTextStyles.font16Regular),
         description: _dateAndCategoryAndPriority(radius),
