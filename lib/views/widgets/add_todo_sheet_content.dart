@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../cubits/new_todo/new_todo_cubit.dart';
 import '../../models/form_attributes.dart';
-import 'add_todo_form.dart';
+import 'todo_content_form.dart';
 import 'assign_new_todo_content_bloc_listener.dart';
 import 'inherited_form_attributes.dart';
 import 'new_todo_action_row.dart';
@@ -44,10 +46,16 @@ class _AddTodoSheetContentState extends State<AddTodoSheetContent> {
         spacing: 16.h,
         mainAxisSize: .min,
         crossAxisAlignment: .start,
-        children: const [
-          AddTodoForm(),
-          AssignNewTodoContentBlocListener(),
-          NewTodoActionRow(),
+        children: [
+          TodoContentForm(
+            titleFieldOnChanged: (value) =>
+                context.read<NewTodoCubit>().assignNewTodoContent(title: value),
+            descriptionFieldOnChanged: (value) => context
+                .read<NewTodoCubit>()
+                .assignNewTodoContent(description: value),
+          ),
+          const AssignNewTodoContentBlocListener(),
+          const NewTodoActionRow(),
         ],
       ),
     );

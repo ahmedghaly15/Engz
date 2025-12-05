@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../cubits/edit_todo/edit_todo_cubit.dart';
 import '../../cubits/home/todo_cubit.dart';
 import '../../cubits/onboarding/onboarding_cubit.dart';
 import '../../models/todo.dart';
@@ -23,7 +24,12 @@ class AppRouter {
         return _homeRoute();
       case Routes.editTodo:
         final args = settings.arguments as Todo;
-        return MaterialPageRoute(builder: (_) => EditTodoView(todo: args));
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<EditTodoCubit>(
+            create: (_) => getIt<EditTodoCubit>()..initTodo(args),
+            child: EditTodoView(todo: args),
+          ),
+        );
       default:
         return _notFoundRoute();
     }

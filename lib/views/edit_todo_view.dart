@@ -29,7 +29,7 @@ class EditTodoView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Container(
                   margin: .only(top: 16.h, bottom: 38.h),
-                  child: EditTodoItem(todo: _todo),
+                  child: const EditTodoItem(),
                 ),
               ),
               SliverList.separated(

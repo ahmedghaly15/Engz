@@ -36,4 +36,5 @@ class AppStrings {
   static const String edit = 'Edit';
   static const String defaultError =
       'Oops! Something went wrong.\nDon\'t worry, we\'re working on it.';
+  static const String cancel = 'Cancel';
 }
