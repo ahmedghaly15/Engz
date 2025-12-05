@@ -1,25 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../core/helpers/extensions.dart';
+import '../../cubits/new_todo/new_todo_cubit.dart';
 import 'add_todo_bloc_listener.dart';
 import 'add_todo_icon_button_bloc_selector.dart';
-import 'show_new_todo_category_selector_icon_button.dart';
-import 'show_new_todo_date_picker_icon_button.dart';
-import 'show_new_todo_priority_selector_icon_button.dart';
 
 class NewTodoActionRow extends StatelessWidget {
   const NewTodoActionRow({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: .start,
       children: [
-        ShowNewTodoDatePickerIconButton(),
-        ShowNewTodoCategorySelectorIconButton(),
-        ShowNewTodoPrioritySelectorIconButton(),
-        AddTodoBlocListener(),
-        Spacer(),
-        AddTodoIconButtonBlocSelector(),
+        IconButton(
+          onPressed: () => context.showDatePicker(
+            (dateTime) => context.read<NewTodoCubit>().assignDate(dateTime),
+          ),
+          icon: const Icon(LucideIcons.calendar),
+        ),
+        IconButton(
+          onPressed: () => context.showCategorySelectorDialog(
+            cubit: context.read<NewTodoCubit>(),
+          ),
+          icon: const Icon(LucideIcons.layoutGrid),
+        ),
+        IconButton(
+          onPressed: () => context.showPriorityDialog(
+            cubit: context.read<NewTodoCubit>(),
+            constrains: const BoxConstraints(maxWidth: 327, maxHeight: 600),
+          ),
+          icon: const Icon(LucideIcons.flag),
+        ),
+        const AddTodoBlocListener(),
+        const Spacer(),
+        const AddTodoIconButtonBlocSelector(),
       ],
     );
   }

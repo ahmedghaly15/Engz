@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../cubits/selector/selector_cubit.dart';
+import '../../views/widgets/responsive_new_todo_category_grid_view.dart';
+import '../../views/widgets/responsive_new_todo_priority_grid_view.dart';
+import '../utils/app_strings.dart';
 import '../widgets/coming_soon_shad_dialog.dart';
+import '../widgets/primary_button.dart';
 
 extension NavigationExtensions<T> on BuildContext {
   Future<T?> pushNamed(String routeName, {Object? arguments}) =>
@@ -87,4 +93,44 @@ extension ShowShadDialog<T> on BuildContext {
 extension ComingSoonDialog on BuildContext {
   void showComingSoonDialog() =>
       showShadCnDialog((_) => const ComingSoonShadDialog());
+}
+
+extension ShowPriorityShadDialog on BuildContext {
+  void showPriorityDialog({
+    required SelectorCubitBase cubit,
+    BoxConstraints? constrains,
+  }) => showShadCnDialog(
+    (_) => BlocProvider<SelectorCubitBase>.value(
+      value: cubit,
+      child: ShadDialog(
+        closeIcon: const SizedBox.shrink(),
+        constraints: constrains,
+        title: const Text(AppStrings.taskPriority),
+        child: ResponsiveNewTodoPriorityGridView(selectorCubit: cubit),
+      ),
+    ),
+  );
+}
+
+extension ShowCategorySelectorShadDialog on BuildContext {
+  void showCategorySelectorDialog({
+    required SelectorCubitBase cubit,
+    BoxConstraints? constrains,
+  }) => showShadCnDialog(
+    (_) => BlocProvider<SelectorCubitBase>.value(
+      value: cubit,
+      child: ShadDialog(
+        constraints: constrains,
+        closeIcon: const SizedBox.shrink(),
+        title: const Text(AppStrings.chooseCategory),
+        child: ResponsiveNewTodoCategoryGridView(selectorCubit: cubit),
+        actions: [
+          PrimaryButton(
+            onPressed: () => showComingSoonDialog(),
+            text: AppStrings.addCategory,
+          ),
+        ],
+      ),
+    ),
+  );
 }

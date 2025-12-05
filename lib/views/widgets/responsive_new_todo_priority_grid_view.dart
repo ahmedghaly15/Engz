@@ -5,11 +5,15 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../core/theming/app_colors.dart';
 import '../../core/theming/app_text_styles.dart';
-import '../../cubits/new_todo/new_todo_cubit.dart';
-import '../../cubits/new_todo/new_todo_state.dart';
+import '../../cubits/selector/selector_cubit.dart';
 
 class ResponsiveNewTodoPriorityGridView extends StatelessWidget {
-  const ResponsiveNewTodoPriorityGridView({super.key});
+  const ResponsiveNewTodoPriorityGridView({
+    super.key,
+    required SelectorCubitBase selectorCubit,
+  }) : _selectorCubit = selectorCubit;
+
+  final SelectorCubitBase _selectorCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -29,38 +33,32 @@ class ResponsiveNewTodoPriorityGridView extends StatelessWidget {
           ),
           children: List<int>.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
               .map(
-                (priority) => BlocSelector<NewTodoCubit, NewTodoState, int>(
-                  selector: (state) => state.todo!.priority,
-                  builder: (context, currentPriority) {
-                    final isSelected = currentPriority == priority;
-                    return GestureDetector(
-                      onTap: () =>
-                          context.read<NewTodoCubit>().selectPriority(priority),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        padding: .symmetric(horizontal: dialogWidth * 0.02),
-                        decoration: BoxDecoration(
-                          color: isSelected
-                              ? AppColors.primary
-                              : AppColors.color272727,
-                          borderRadius: .circular(4.r),
-                        ),
-                        child: Column(
-                          mainAxisSize: .min,
-                          crossAxisAlignment: .center,
-                          mainAxisAlignment: .center,
-                          spacing: 5.h,
-                          children: [
-                            const Icon(LucideIcons.flag, color: Colors.white),
-                            Text(
-                              '$priority',
-                              style: AppTextStyles.font16Regular,
-                            ),
-                          ],
-                        ),
+                (priority) => BlocSelector<SelectorCubitBase, dynamic, bool>(
+                  selector: (state) =>
+                      _selectorCubit.selectedPriority == priority,
+                  builder: (context, isSelected) => GestureDetector(
+                    onTap: () => _selectorCubit.selectPriority(priority),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      padding: .symmetric(horizontal: dialogWidth * 0.02),
+                      decoration: BoxDecoration(
+                        color: isSelected
+                            ? AppColors.primary
+                            : AppColors.color272727,
+                        borderRadius: .circular(4.r),
                       ),
-                    );
-                  },
+                      child: Column(
+                        mainAxisSize: .min,
+                        crossAxisAlignment: .center,
+                        mainAxisAlignment: .center,
+                        spacing: 5.h,
+                        children: [
+                          const Icon(LucideIcons.flag, color: Colors.white),
+                          Text('$priority', style: AppTextStyles.font16Regular),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               )
               .toList(),

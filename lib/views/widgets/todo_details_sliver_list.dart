@@ -1,3 +1,4 @@
+import 'package:engz/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../core/utils/app_strings.dart';
 import '../../cubits/edit_todo/edit_todo_cubit.dart';
+import '../../cubits/edit_todo/edit_todo_state.dart';
 import '../../models/todo.dart';
 import '../../models/todo_detail.dart';
 import 'edit_todo_category_container.dart';
@@ -48,7 +50,16 @@ class TodoDetailsSliverList extends StatelessWidget {
       TodoDetailItem(
         detailIcon: LucideIcons.flag,
         detailTitle: '${AppStrings.task} ${AppStrings.priority}',
-        detailContent: Text('${todo.priority}'),
+        detailContent: GestureDetector(
+          onTap: () =>
+              context.showPriorityDialog(cubit: context.read<EditTodoCubit>()),
+          child: BlocSelector<EditTodoCubit, EditTodoState, int>(
+            selector: (state) => state.todo!.priority,
+            builder: (context, priority) {
+              return Text('$priority');
+            },
+          ),
+        ),
       ),
     ];
   }
