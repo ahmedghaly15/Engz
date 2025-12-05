@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubits/home/todo_cubit.dart';
 import '../../cubits/onboarding/onboarding_cubit.dart';
+import '../../models/todo.dart';
+import '../../views/edit_todo_view.dart';
 import '../../views/home_view.dart';
 import '../../views/onboarding_view.dart';
 import '../di/di.dart';
@@ -19,6 +21,9 @@ class AppRouter {
         return isOnboardingVisited ? _homeRoute() : _onboardingRoute();
       case Routes.home:
         return _homeRoute();
+      case Routes.editTodo:
+        final args = settings.arguments as Todo;
+        return MaterialPageRoute(builder: (_) => EditTodoView(todo: args));
       default:
         return _notFoundRoute();
     }

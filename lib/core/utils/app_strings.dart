@@ -28,4 +28,10 @@ class AppStrings {
   static const String searchForYourTask = 'Search for your task';
   static const String comingSoon =
       'This feature is currently under development.\nStay tuned for the next update!';
+  static const String task = 'Task';
+  static const String category = 'Category';
+  static const String time = 'Time';
+  static const String priority = 'Priority';
+  static const String delete = 'Delete';
+  static const String edit = 'Edit';
 }

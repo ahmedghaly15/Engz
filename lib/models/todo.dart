@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'category.dart';
+import '../core/helpers/extensions.dart';
 
 part 'todo.freezed.dart';
 part 'todo.g.dart';
@@ -19,4 +20,52 @@ sealed class Todo with _$Todo {
   }) = _Todo;
 
   factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
+}
+
+@JsonEnum()
+enum CategoryType {
+  grocery,
+  work,
+  sport,
+  design,
+  university,
+  social,
+  music,
+  health,
+  movie,
+  home,
+}
+
+extension CategoryExtension on CategoryType {
+  String get typeName => name.capitalize();
+
+  String get iconPath {
+    const String base = 'assets/svgs/';
+    return '$base$name-icon.svg';
+  }
+
+  Color get color {
+    switch (this) {
+      case CategoryType.grocery:
+        return const Color(0xffCCFF80);
+      case CategoryType.work:
+        return const Color(0xffFF9680);
+      case CategoryType.sport:
+        return const Color(0xff80FFFF);
+      case CategoryType.design:
+        return const Color(0xff80FFD9);
+      case CategoryType.university:
+        return const Color(0xff809CFF);
+      case CategoryType.social:
+        return const Color(0xffFF80EB);
+      case CategoryType.music:
+        return const Color(0xffFC80FF);
+      case CategoryType.health:
+        return const Color(0xff80FFA3);
+      case CategoryType.movie:
+        return const Color(0xff80D1FF);
+      case CategoryType.home:
+        return const Color(0xffFFCC80);
+    }
+  }
 }

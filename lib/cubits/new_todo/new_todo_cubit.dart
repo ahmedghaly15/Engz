@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../models/category.dart';
+import '../../models/todo.dart' show CategoryType;
 import 'new_todo_state.dart';
 
 class NewTodoCubit extends Cubit<NewTodoState> {

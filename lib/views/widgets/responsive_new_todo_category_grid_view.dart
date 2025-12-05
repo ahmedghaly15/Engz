@@ -6,7 +6,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../core/theming/app_text_styles.dart';
 import '../../cubits/new_todo/new_todo_cubit.dart';
 import '../../cubits/new_todo/new_todo_state.dart';
-import '../../models/category.dart';
+import '../../models/todo.dart' show CategoryType, CategoryExtension;
 
 class ResponsiveNewTodoCategoryGridView extends StatelessWidget {
   const ResponsiveNewTodoCategoryGridView({super.key});

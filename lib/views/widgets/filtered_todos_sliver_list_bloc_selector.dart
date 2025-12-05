@@ -33,7 +33,7 @@ class FilteredTodosSliverListBlocSelector extends StatelessWidget {
               child: child,
             ),
           ),
-          child: TodoCard(todo: todos[index], index: index),
+          child: TodoCard(todo: todos[index]),
         ),
         separatorBuilder: (_, _) => SizedBox(height: 16.h),
       ),

@@ -96,6 +96,10 @@ class AppThemes {
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(foregroundColor: Colors.white),
         ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.darkBg,
+          elevation: 0,
+        ),
         navigationBarTheme: const NavigationBarThemeData(
           backgroundColor: AppColors.darkBg,
           elevation: 0,

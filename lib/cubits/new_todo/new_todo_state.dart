@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../models/category.dart';
 import '../../models/todo.dart';
 
 part 'new_todo_state.freezed.dart';
