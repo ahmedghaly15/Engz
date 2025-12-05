@@ -13,21 +13,22 @@ class TodoCubit extends HydratedCubit<TodoState> {
     emit(state.copyWith(todos: orderedTodos, status: TodoStatus.addTodo));
   }
 
-  void updateTodo(int index, Todo todo) {
-    final current = todo;
+  void updateTodoById(Todo updatedTodo) {
+    final updatedList = state.todos.map((todo) {
+      if (todo.id == updatedTodo.id) {
+        return todo.copyWith(
+          title: updatedTodo.title,
+          description: updatedTodo.description,
+          dateTime: updatedTodo.dateTime,
+          category: updatedTodo.category,
+          priority: updatedTodo.priority,
+          isCompleted: updatedTodo.isCompleted,
+        );
+      }
+      return todo;
+    }).toList();
 
-    final updated = current.copyWith(
-      title: todo.title ?? current.title,
-      description: todo.description ?? current.description,
-      dateTime: todo.dateTime ?? current.dateTime,
-      category: todo.category ?? current.category,
-      priority: todo.priority ?? current.priority,
-      isCompleted: todo.isCompleted ?? current.isCompleted,
-    );
-
-    final updatedTodos = [...state.todos]..[index] = updated;
-
-    emit(state.copyWith(todos: updatedTodos, status: TodoStatus.updateTodo));
+    emit(state.copyWith(todos: updatedList, status: TodoStatus.updateTodo));
   }
 
   void deleteTodo(int index) {

@@ -3,10 +3,9 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../widgets/coming_soon_shad_dialog.dart';
 
-extension NavigationExtensions on BuildContext {
-  void pushNamed(String routeName, {Object? arguments}) {
-    Navigator.pushNamed(this, routeName, arguments: arguments);
-  }
+extension NavigationExtensions<T> on BuildContext {
+  Future<T?> pushNamed(String routeName, {Object? arguments}) =>
+      Navigator.pushNamed<T>(this, routeName, arguments: arguments);
 
   void pushReplacementNamed(String routeName) {
     Navigator.pushReplacementNamed(this, routeName);

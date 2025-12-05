@@ -1,4 +1,6 @@
+import 'package:engz/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
@@ -7,6 +9,7 @@ import '../core/theming/app_text_styles.dart';
 import '../core/utils/app_strings.dart';
 import '../core/widgets/custom_sliver_app_bar.dart';
 import '../core/widgets/primary_button.dart';
+import '../cubits/edit_todo/edit_todo_cubit.dart';
 import '../models/todo.dart';
 import '../models/todo_detail.dart';
 import 'widgets/edit_todo_item.dart';
@@ -71,7 +74,8 @@ class EditTodoView extends StatelessWidget {
                   children: [
                     const Spacer(),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          context.pop(context.read<EditTodoCubit>().state.todo),
                       text: '${AppStrings.edit} ${AppStrings.task}',
                     ),
                   ],

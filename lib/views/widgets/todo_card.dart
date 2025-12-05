@@ -20,7 +20,16 @@ class TodoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final radius = 4.r;
     return InkWell(
-      onTap: () => context.pushNamed(Routes.editTodo, arguments: _todo),
+      onTap: () async {
+        final Todo? updatedTodo = await context.pushNamed(
+          Routes.editTodo,
+          arguments: _todo,
+        );
+
+        if (updatedTodo is Todo) {
+          context.read<TodoCubit>().updateTodoById(updatedTodo);
+        }
+      },
       borderRadius: .all(.circular(radius)),
       child: ShadCard(
         rowCrossAxisAlignment: .center,
