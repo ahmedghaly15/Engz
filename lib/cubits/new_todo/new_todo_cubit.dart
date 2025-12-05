@@ -1,9 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../models/todo.dart' show CategoryType;
+import '../selector/selector_cubit.dart';
 import 'new_todo_state.dart';
 
-class NewTodoCubit extends Cubit<NewTodoState> {
+class NewTodoCubit extends SelectorCubitBase<NewTodoState> {
   NewTodoCubit() : super(NewTodoState.initial());
 
   void assignNewTodoContent({String? title, String? description}) {
@@ -38,6 +37,10 @@ class NewTodoCubit extends Cubit<NewTodoState> {
     ),
   );
 
+  @override
+  CategoryType? get selectedCategory => state.todo!.category;
+
+  @override
   void selectCategory(CategoryType type) {
     if (state.todo!.category != type) {
       emit(

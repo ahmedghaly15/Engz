@@ -4,7 +4,7 @@ import '../../models/todo.dart';
 
 part 'edit_todo_state.freezed.dart';
 
-enum EditTodoStatus { initial, initTodo, editTodoContent }
+enum EditTodoStatus { initial, initTodo, editTodoContent, editTodoCategory }
 
 extension EditTodoStatusExt on EditTodoStatus {
   bool get isEditTodoContent => this == EditTodoStatus.editTodoContent;
