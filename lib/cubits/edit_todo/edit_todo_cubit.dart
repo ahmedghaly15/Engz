@@ -35,4 +35,19 @@ class EditTodoCubit extends SelectorCubitBase<EditTodoState> {
       );
     }
   }
+
+  @override
+  int? get selectedPriority => state.todo!.priority;
+
+  @override
+  void selectPriority(int priority) {
+    if (state.todo!.priority != priority) {
+      emit(
+        state.copyWith(
+          todo: state.todo!.copyWith(priority: priority),
+          status: EditTodoStatus.editTodoPriority,
+        ),
+      );
+    }
+  }
 }

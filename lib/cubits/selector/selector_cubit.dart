@@ -7,4 +7,6 @@ abstract class SelectorCubitBase<S> extends BlocBase<S> {
 
   CategoryType? get selectedCategory;
   void selectCategory(CategoryType type);
+  int? get selectedPriority;
+  void selectPriority(int priority);
 }

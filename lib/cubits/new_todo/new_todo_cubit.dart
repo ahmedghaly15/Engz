@@ -52,6 +52,10 @@ class NewTodoCubit extends SelectorCubitBase<NewTodoState> {
     }
   }
 
+  @override
+  int? get selectedPriority => state.todo!.priority;
+
+  @override
   void selectPriority(int priority) {
     if (state.todo!.priority != priority) {
       emit(
