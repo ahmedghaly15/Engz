@@ -17,6 +17,7 @@ class ShowNewTodoPrioritySelectorIconButton extends StatelessWidget {
         (_) => BlocProvider<NewTodoCubit>.value(
           value: context.read<NewTodoCubit>(),
           child: const ShadDialog(
+            closeIcon: SizedBox.shrink(),
             constraints: BoxConstraints(maxWidth: 327, maxHeight: 600),
             title: Text(AppStrings.taskPriority),
             child: ResponsiveNewTodoPriorityGridView(),

@@ -5,9 +5,9 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../../core/utils/app_strings.dart';
 import '../../core/utils/assets.dart';
 import '../../core/widgets/custom_input_form_field.dart';
+import 'completed_todos_title_card_bloc_selector.dart';
 import 'filtered_todos_sliver_list_bloc_selector.dart';
 import 'inherited_scroll_controller.dart';
-import 'todos_title_card.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
@@ -53,12 +53,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ),
           ),
           const FilteredTodosSliverListBlocSelector(),
-          SliverPadding(
-            padding: .symmetric(vertical: 24.h),
-            sliver: const SliverToBoxAdapter(
-              child: TodosTitleCard(title: AppStrings.completed),
-            ),
-          ),
+          const CompletedTodosTitleCardBlocSelector(),
           const FilteredTodosSliverListBlocSelector(
             filter: TodoFilter.completed,
           ),

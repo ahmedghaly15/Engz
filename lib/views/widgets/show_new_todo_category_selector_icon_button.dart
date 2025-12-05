@@ -18,10 +18,14 @@ class ShowNewTodoCategorySelectorIconButton extends StatelessWidget {
         (_) => BlocProvider<NewTodoCubit>.value(
           value: context.read<NewTodoCubit>(),
           child: ShadDialog(
+            closeIcon: const SizedBox.shrink(),
             title: const Text(AppStrings.chooseCategory),
             child: const ResponsiveNewTodoCategoryGridView(),
             actions: [
-              PrimaryButton(onPressed: () {}, text: AppStrings.addCategory),
+              PrimaryButton(
+                onPressed: () => context.showComingSoonDialog(),
+                text: AppStrings.addCategory,
+              ),
             ],
           ),
         ),

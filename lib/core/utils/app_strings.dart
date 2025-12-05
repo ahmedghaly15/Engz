@@ -26,4 +26,6 @@ class AppStrings {
   static const String addCategory = 'Add Category';
   static const String taskPriority = 'Task Priority';
   static const String searchForYourTask = 'Search for your task';
+  static const String comingSoon =
+      'This feature is currently under development.\nStay tuned for the next update!';
 }
