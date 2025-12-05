@@ -25,4 +25,5 @@ class AppStrings {
   static const String chooseCategory = 'Choose Category';
   static const String addCategory = 'Add Category';
   static const String taskPriority = 'Task Priority';
+  static const String searchForYourTask = 'Search for your task';
 }

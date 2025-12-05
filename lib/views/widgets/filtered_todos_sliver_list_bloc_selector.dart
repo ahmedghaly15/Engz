@@ -23,7 +23,18 @@ class FilteredTodosSliverListBlocSelector extends StatelessWidget {
       selector: (state) => _filterTodos(state.todos),
       builder: (_, todos) => SliverList.separated(
         itemCount: todos.length,
-        itemBuilder: (_, index) => TodoCard(todo: todos[index], index: index),
+        itemBuilder: (_, index) => TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: 1),
+          duration: const Duration(milliseconds: 675),
+          builder: (context, value, child) => Opacity(
+            opacity: value,
+            child: Transform.translate(
+              offset: Offset(0, 20 * (1 - value)),
+              child: child,
+            ),
+          ),
+          child: TodoCard(todo: todos[index], index: index),
+        ),
         separatorBuilder: (_, _) => SizedBox(height: 16.h),
       ),
     );

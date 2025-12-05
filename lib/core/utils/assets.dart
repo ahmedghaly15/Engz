@@ -70,6 +70,10 @@ class Assets {
   /// assets/svgs/primary-send-icon.svg
   static const String svgsPrimarySendIcon = "assets/svgs/primary-send-icon.svg";
 
+  /// Assets for svgsSearchIcon
+  /// assets/svgs/search-icon.svg
+  static const String svgsSearchIcon = "assets/svgs/search-icon.svg";
+
   /// Assets for svgsSocialIcon
   /// assets/svgs/social-icon.svg
   static const String svgsSocialIcon = "assets/svgs/social-icon.svg";

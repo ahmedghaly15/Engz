@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../core/utils/app_strings.dart';
+import '../core/utils/assets.dart';
+import '../core/widgets/custom_input_form_field.dart';
 import '../cubits/home/todo_cubit.dart';
 import '../cubits/home/todo_state.dart';
 import 'widgets/add_todo_fab.dart';
@@ -48,6 +51,22 @@ class _HomeViewState extends State<HomeView> {
                     ? CustomScrollView(
                         controller: _scrollController,
                         slivers: [
+                          SliverPadding(
+                            padding: .only(bottom: 20.h),
+                            sliver: SliverToBoxAdapter(
+                              child: GestureDetector(
+                                onTap: () {
+                                  // TODO: handle search via => showSearch()
+                                },
+                                child: CustomInputFormField(
+                                  placeholderText: AppStrings.searchForYourTask,
+                                  leading: SvgPicture.asset(
+                                    Assets.svgsSearchIcon,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                           const FilteredTodosSliverListBlocSelector(),
                           SliverPadding(
                             padding: .symmetric(vertical: 24.h),

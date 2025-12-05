@@ -23,6 +23,7 @@ class AddTodoForm extends StatelessWidget {
         spacing: 13.h,
         children: [
           CustomInputFormField(
+            autofocus: true,
             controller: formAttributes.titleController,
             placeholderText: AppStrings.title,
             validator: (value) => InputValidator.validateField(value),
