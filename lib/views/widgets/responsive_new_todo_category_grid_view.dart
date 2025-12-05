@@ -4,12 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../core/theming/app_text_styles.dart';
-import '../../cubits/new_todo/new_todo_cubit.dart';
-import '../../cubits/new_todo/new_todo_state.dart';
+import '../../cubits/selector/selector_cubit.dart';
 import '../../models/todo.dart' show CategoryType, CategoryExtension;
 
 class ResponsiveNewTodoCategoryGridView extends StatelessWidget {
-  const ResponsiveNewTodoCategoryGridView({super.key});
+  const ResponsiveNewTodoCategoryGridView({
+    super.key,
+    required SelectorCubitBase selectorCubit,
+  }) : _selectorCubit = selectorCubit;
+
+  final SelectorCubitBase _selectorCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,6 @@ class ResponsiveNewTodoCategoryGridView extends StatelessWidget {
       builder: (context, constraints) {
         final dialogWidth = constraints.maxWidth;
 
-        // Responsive spacing based on dialog width
         final crossSpacing = dialogWidth * 0.02;
         final mainSpacing = dialogWidth * 0.05;
 
@@ -28,45 +31,39 @@ class ResponsiveNewTodoCategoryGridView extends StatelessWidget {
             crossAxisSpacing: crossSpacing,
             childAspectRatio: 1,
           ),
-          children: CategoryType.values
-              .map(
-                (type) => GestureDetector(
-                  onTap: () =>
-                      context.read<NewTodoCubit>().selectCategory(type),
-                  child: Column(
-                    mainAxisSize: .min,
-                    crossAxisAlignment: .center,
-                    spacing: 6.h,
-                    children: [
-                      Flexible(
-                        child: BlocSelector<NewTodoCubit, NewTodoState, bool>(
-                          selector: (state) => state.todo!.category == type,
-                          builder: (context, isSelected) => AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
-                            padding: .all(dialogWidth * 0.08),
-                            decoration: BoxDecoration(
-                              color: type.color,
-                              borderRadius: .circular(6.r),
-                              border: isSelected
-                                  ? Border.all(
-                                      color: Colors.white,
-                                      width: 2.5.w,
-                                    )
-                                  : null,
-                            ),
-                            child: SvgPicture.asset(
-                              type.iconPath,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
+          children: CategoryType.values.map((type) {
+            return GestureDetector(
+              onTap: () => _selectorCubit.selectCategory(type),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 6.h,
+                children: [
+                  Flexible(
+                    child: BlocSelector<SelectorCubitBase, dynamic, bool>(
+                      selector: (_) => _selectorCubit.selectedCategory == type,
+                      builder: (context, isSelected) => AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        padding: EdgeInsets.all(dialogWidth * 0.08),
+                        decoration: BoxDecoration(
+                          color: type.color,
+                          borderRadius: BorderRadius.circular(6.r),
+                          border: isSelected
+                              ? Border.all(color: Colors.white, width: 2.5.w)
+                              : null,
+                        ),
+                        child: SvgPicture.asset(
+                          type.iconPath,
+                          fit: BoxFit.contain,
                         ),
                       ),
-                      Text(type.typeName, style: AppTextStyles.font12Regular),
-                    ],
+                    ),
                   ),
-                ),
-              )
-              .toList(),
+                  Text(type.typeName, style: AppTextStyles.font12Regular),
+                ],
+              ),
+            );
+          }).toList(),
         );
       },
     );
