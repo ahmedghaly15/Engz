@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   distribute:
-    if: contains(github.event.head_commit.message, 'deploy') || github.event_name == 'workflow_dispatch'
+    if: contains(toLower(github.event.head_commit.message), 'deploy') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     steps:
