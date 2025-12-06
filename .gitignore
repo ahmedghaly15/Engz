@@ -47,8 +47,6 @@ app.*.map.json
 
 .vscode
 web
-firebase_options.dart
-firebase.json
 google-services.json
 linux
 macos
