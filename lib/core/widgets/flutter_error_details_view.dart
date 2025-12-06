@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../helpers/extensions.dart';
-import '../utils/app_strings.dart';
 
 class FlutterErrorDetailsView extends StatelessWidget {
   const FlutterErrorDetailsView({super.key, required this.details});
@@ -22,7 +21,7 @@ class FlutterErrorDetailsView extends StatelessWidget {
           children: [
             const Flexible(child: Icon(LucideIcons.circleAlert)),
             Text(
-              AppStrings.defaultError,
+              details.exception.toString(),
               style: context.shadTextTheme.h4,
               textAlign: TextAlign.center,
             ),
