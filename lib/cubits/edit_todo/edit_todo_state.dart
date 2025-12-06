@@ -10,10 +10,12 @@ enum EditTodoStatus {
   editTodoContent,
   editTodoCategory,
   editTodoPriority,
+  triggerDeleteTodo,
 }
 
 extension EditTodoStatusExt on EditTodoStatus {
   bool get isEditTodoContent => this == EditTodoStatus.editTodoContent;
+  bool get isTriggerDeleteTodo => this == EditTodoStatus.triggerDeleteTodo;
 }
 
 @freezed

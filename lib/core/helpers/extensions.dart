@@ -33,7 +33,8 @@ extension NavigationExtensions<T> on BuildContext {
     Navigator.pushNamedAndRemoveUntil(this, routeName, (route) => false);
   }
 
-  void popTop() => Navigator.of(this, rootNavigator: true).pop();
+  void popTop([dynamic result]) =>
+      Navigator.of(this, rootNavigator: true).pop(result);
 }
 
 extension NullStringExtension on String? {

@@ -50,4 +50,7 @@ class EditTodoCubit extends SelectorCubitBase<EditTodoState> {
       );
     }
   }
+
+  void triggerDeleteTodo() =>
+      emit(state.copyWith(status: EditTodoStatus.triggerDeleteTodo));
 }

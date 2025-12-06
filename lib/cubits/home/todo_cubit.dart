@@ -31,9 +31,9 @@ class TodoCubit extends HydratedCubit<TodoState> {
     emit(state.copyWith(todos: updatedList, status: TodoStatus.updateTodo));
   }
 
-  void deleteTodo(int index) {
-    final updatedTodos = [...state.todos]..removeAt(index);
-    emit(state.copyWith(todos: updatedTodos, status: TodoStatus.deleteTodo));
+  void deleteTodo(String id) {
+    final updatedList = state.todos.where((todo) => todo.id != id).toList();
+    emit(state.copyWith(todos: updatedList, status: TodoStatus.deleteTodo));
   }
 
   void toggleCompleteTodo(String id) {

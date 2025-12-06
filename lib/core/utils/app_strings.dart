@@ -37,4 +37,7 @@ class AppStrings {
   static const String defaultError =
       'Oops! Something went wrong.\nDon\'t worry, we\'re working on it.';
   static const String cancel = 'Cancel';
+  static const String sureToDelete =
+      'Are you sure you want to delete this task?';
+  static const String confirm = 'Confirm';
 }

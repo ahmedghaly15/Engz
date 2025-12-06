@@ -86,6 +86,19 @@ class AppThemes {
       actionsMainAxisSize: .min,
       gap: 16.h,
     ),
+    alertDialogTheme: ShadDialogTheme(
+      constraints: const BoxConstraints(maxWidth: 327),
+      actionsAxis: .horizontal,
+      actionsMainAxisAlignment: .spaceBetween,
+      actionsMainAxisSize: MainAxisSize.min, // prevents infinite width
+      titleStyle: AppTextStyles.font16Bold,
+      titleTextAlign: TextAlign.center,
+      descriptionStyle: AppTextStyles.font14Regular.copyWith(
+        color: AppColors.colorAFAFAF,
+      ),
+      padding: .symmetric(horizontal: 18.w),
+      radius: .circular(4.r),
+    ),
   );
 
   static ThemeData materialDarkTheme(BuildContext context) =>
