@@ -11,6 +11,7 @@ import 'core/widgets/flutter_error_details_view.dart';
 import 'engz_app.dart';
 
 void main() async {
+  // testing deploy
   WidgetsFlutterBinding.ensureInitialized();
   final dir = await getApplicationDocumentsDirectory();
 
