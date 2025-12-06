@@ -11,7 +11,7 @@ sealed class TodoState with _$TodoState {
   const factory TodoState({
     @Default(TodoStatus.initial) TodoStatus status,
     @Default([]) List<Todo> todos,
-    @Default(false) bool showCompleted,
+    @Default(true) bool showCompleted,
   }) = _TodoState;
 
   factory TodoState.initial() => const TodoState();

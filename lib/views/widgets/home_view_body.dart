@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/enums/todo_filter.dart';
 import 'completed_todos_title_card_bloc_selector.dart';
 import 'filtered_todos_sliver_list_bloc_selector.dart';
 import 'inherited_scroll_controller.dart';

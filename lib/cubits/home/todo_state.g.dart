@@ -15,7 +15,7 @@ _TodoState _$TodoStateFromJson(Map<String, dynamic> json) => _TodoState(
           ?.map((e) => Todo.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
-  showCompleted: json['showCompleted'] as bool? ?? false,
+  showCompleted: json['showCompleted'] as bool? ?? true,
 );
 
 Map<String, dynamic> _$TodoStateToJson(_TodoState instance) =>

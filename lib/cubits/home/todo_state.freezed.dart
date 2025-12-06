@@ -205,7 +205,7 @@ return $default(_that.status,_that.todos,_that.showCompleted);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _TodoState implements TodoState {
-  const _TodoState({this.status = TodoStatus.initial, final  List<Todo> todos = const [], this.showCompleted = false}): _todos = todos;
+  const _TodoState({this.status = TodoStatus.initial, final  List<Todo> todos = const [], this.showCompleted = true}): _todos = todos;
   factory _TodoState.fromJson(Map<String, dynamic> json) => _$TodoStateFromJson(json);
 
 @override@JsonKey() final  TodoStatus status;
