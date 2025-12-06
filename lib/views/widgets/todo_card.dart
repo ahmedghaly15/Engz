@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../core/enums/todo_action.dart';
 import '../../core/helpers/extensions.dart';
 import '../../core/router/routes.dart';
 import '../../core/theming/app_colors.dart';
 import '../../core/theming/app_text_styles.dart';
 import '../../cubits/home/todo_cubit.dart';
+import '../../models/edit_todo_pop_attributes.dart';
 import '../../models/todo.dart';
 import 'todo_complete_checkbox.dart';
 
@@ -20,16 +22,7 @@ class TodoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final radius = 4.r;
     return InkWell(
-      onTap: () async {
-        final Todo? updatedTodo = await context.pushNamed(
-          Routes.editTodo,
-          arguments: _todo,
-        );
-
-        if (updatedTodo is Todo) {
-          context.read<TodoCubit>().updateTodoById(updatedTodo);
-        }
-      },
+      onTap: () => _pushAndHandleTodoAction(context),
       borderRadius: .all(.circular(radius)),
       child: ShadCard(
         rowCrossAxisAlignment: .center,
@@ -45,6 +38,24 @@ class TodoCard extends StatelessWidget {
         description: _dateAndCategoryAndPriority(radius),
       ),
     );
+  }
+
+  Future<void> _pushAndHandleTodoAction(BuildContext context) async {
+    final EditTodoPopAttributes? editTodoAttributes = await context.pushNamed(
+      Routes.editTodo,
+      arguments: _todo,
+    );
+
+    if (editTodoAttributes != null) {
+      switch (editTodoAttributes.action) {
+        case TodoAction.update:
+          context.read<TodoCubit>().updateTodoById(editTodoAttributes.todo);
+          break;
+        case TodoAction.delete:
+          context.read<TodoCubit>().deleteTodo(editTodoAttributes.todo.id);
+          break;
+      }
+    }
   }
 
   Row _dateAndCategoryAndPriority(double radius) {

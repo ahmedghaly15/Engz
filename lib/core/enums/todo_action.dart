@@ -1,0 +1,1 @@
+enum TodoAction { update, delete }

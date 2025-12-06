@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../core/helpers/extensions.dart';
 import '../../core/utils/app_strings.dart';
+import '../../core/widgets/cancel_text_button.dart';
 import '../../core/widgets/primary_button.dart';
 import '../../cubits/edit_todo/edit_todo_cubit.dart';
 import '../../cubits/edit_todo/edit_todo_state.dart';
@@ -56,13 +57,7 @@ class _EditTodoContentShadDialogState extends State<EditTodoContentShadDialog> {
         title: const Text('${AppStrings.edit} ${AppStrings.task}'),
         child: const TodoContentForm(),
         actions: [
-          Expanded(
-            child: ShadButton.ghost(
-              expands: false,
-              child: const Text(AppStrings.cancel),
-              onPressed: () => context.pop(),
-            ),
-          ),
+          const Expanded(child: CancelTextButton()),
           Expanded(child: _editTodoContentButtonBlocListener(context)),
         ],
       ),

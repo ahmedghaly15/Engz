@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/enums/todo_action.dart';
 import '../core/utils/app_strings.dart';
 import '../core/widgets/custom_sliver_app_bar.dart';
 import '../core/widgets/primary_button.dart';
 import '../cubits/edit_todo/edit_todo_cubit.dart';
+import '../models/edit_todo_pop_attributes.dart';
 import '../models/todo.dart';
 import 'widgets/delete_todo_button.dart';
+import 'widgets/edit_todo_bloc_listener.dart';
 import 'widgets/edit_todo_item.dart';
 import 'widgets/todo_details_sliver_list.dart';
 
@@ -24,6 +27,7 @@ class EditTodoView extends StatelessWidget {
           child: CustomScrollView(
             slivers: [
               const CustomSliverAppBar(),
+              const SliverToBoxAdapter(child: EditTodoBlocListener()),
               SliverToBoxAdapter(
                 child: Container(
                   margin: .only(top: 16.h, bottom: 38.h),
@@ -43,8 +47,12 @@ class EditTodoView extends StatelessWidget {
                   children: [
                     const Spacer(),
                     PrimaryButton(
-                      onPressed: () =>
-                          context.pop(context.read<EditTodoCubit>().state.todo),
+                      onPressed: () => context.pop(
+                        EditTodoPopAttributes(
+                          action: TodoAction.update,
+                          todo: context.read<EditTodoCubit>().state.todo!,
+                        ),
+                      ),
                       text: '${AppStrings.edit} ${AppStrings.task}',
                     ),
                   ],

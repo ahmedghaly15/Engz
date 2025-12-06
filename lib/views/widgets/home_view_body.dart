@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
-import '../../core/utils/app_strings.dart';
-import '../../core/utils/assets.dart';
-import '../../core/widgets/custom_input_form_field.dart';
 import 'completed_todos_title_card_bloc_selector.dart';
 import 'filtered_todos_sliver_list_bloc_selector.dart';
 import 'inherited_scroll_controller.dart';
+import 'search_input_form_field.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
@@ -40,17 +37,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         slivers: [
           SliverPadding(
             padding: .only(bottom: 20.h),
-            sliver: SliverToBoxAdapter(
-              child: GestureDetector(
-                onTap: () {
-                  // TODO: handle search via => showSearch()
-                },
-                child: CustomInputFormField(
-                  placeholderText: AppStrings.searchForYourTask,
-                  leading: SvgPicture.asset(Assets.svgsSearchIcon),
-                ),
-              ),
-            ),
+            sliver: const SliverToBoxAdapter(child: SearchInputFormField()),
           ),
           const FilteredTodosSliverListBlocSelector(),
           const CompletedTodosTitleCardBlocSelector(),
