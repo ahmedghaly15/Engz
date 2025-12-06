@@ -1,7 +1,7 @@
 name: engz
 description: "A clean and modern todo app that helps users manage tasks, organize categories, track priorities, and view completed todos with smooth animations and an intuitive user experience."
 publish_to: 'none'
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ^3.10.1
